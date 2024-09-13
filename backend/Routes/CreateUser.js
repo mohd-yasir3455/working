@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../Models/Users');
-//we can use express-validator here for more validation 
 
 // POST route for form data
 router.post('/form', async (req, res) => {
@@ -14,16 +13,12 @@ router.post('/form', async (req, res) => {
             dob,
             email,
             gender,
-            bloodGroup,
-            department,
-            designation,
-            schoolCollege,
-            state,
+            occupation,
+            aadhaarNumber,
+            fatherName,
+            address,
             district,
-            schoolAddress,
-            workJobDistrict,
-            homeAddress,
-            homeDistrict,
+            state,
             nominee1,
             relationWithNominee1,
             nominee1Mobile,
@@ -31,13 +26,19 @@ router.post('/form', async (req, res) => {
             relationWithNominee2,
             nominee2Mobile,
             diseaseDescription,
-            isAlreadyRegistered,
-            mobileNumber
+            mobileNumber,
+            homeMobileNumber,
+            declaration
         } = req.body;
 
         // Validate required fields
         if (!password || !confirmPassword || !name || !email || !gender || !state || !mobileNumber) {
             return res.status(400).json({ success: false, error: 'Required fields are missing' });
+        }
+
+        // Ensure that password and confirmPassword match
+        if (password !== confirmPassword) {
+            return res.status(400).json({ success: false, error: 'Passwords do not match' });
         }
 
         // Convert dob to Date object if it exists
@@ -46,7 +47,7 @@ router.post('/form', async (req, res) => {
             return res.status(400).json({ success: false, error: 'Invalid date format for dob' });
         }
 
-        // Create a new user document in the database
+        // Create a new user document in the database (without confirmPassword)
         await User.create({
             password,
             confirmPassword,
@@ -54,16 +55,12 @@ router.post('/form', async (req, res) => {
             dob: dateOfBirth, // Ensure dob is correctly formatted
             email,
             gender,
-            bloodGroup,
-            department,
-            designation,
-            schoolCollege,
-            state,
+            occupation,
+            aadhaarNumber,
+            fatherName,
+            address,
             district,
-            schoolAddress,
-            workJobDistrict,
-            homeAddress,
-            homeDistrict,
+            state,
             nominee1,
             relationWithNominee1,
             nominee1Mobile,
@@ -71,8 +68,9 @@ router.post('/form', async (req, res) => {
             relationWithNominee2,
             nominee2Mobile,
             diseaseDescription,
-            isAlreadyRegistered,
-            mobileNumber
+            mobileNumber,
+            homeMobileNumber,
+            declaration
         });
 
         // Send a success response

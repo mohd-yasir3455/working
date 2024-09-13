@@ -9,6 +9,8 @@ import {
   Box,
   MenuItem,
   Paper,
+  Checkbox,
+  FormControlLabel,
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -54,8 +56,6 @@ const statesInIndia = [
   "West Bengal",
 ];
 
-const bloodGroups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
-
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
     password: "",
@@ -64,25 +64,23 @@ const RegistrationForm = () => {
     dob: "",
     email: "",
     gender: "",
-    bloodGroup: "",
-    department: "",
-    designation: "",
-    schoolCollege: "",
-    state: "",
+    occupation: "",
+    aadharNumber: "",
+    fatherName: "",
+    address: "",
     district: "",
-    schoolAddress: "",
-    workJobDistrict: "",
-    homeAddress: "",
-    homeDistrict: "",
+    state: "",
     nominee1: "",
     relationWithNominee1: "",
     nominee1Mobile: "",
     nominee2: "",
     relationWithNominee2: "",
     nominee2Mobile: "",
+    disease: "",
     diseaseDescription: "",
-    isAlreadyRegistered: false,
     mobileNumber: "",
+    homeMobileNumber: "",
+    declaration: false,
   });
 
   const [errors, setErrors] = useState({});
@@ -151,7 +149,7 @@ const RegistrationForm = () => {
                   <TextField
                     fullWidth
                     type="password"
-                    label="Password"
+                    label="Make Password"
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
@@ -227,48 +225,50 @@ const RegistrationForm = () => {
                 <Grid item xs={12} md={6}>
                   <TextField
                     fullWidth
-                    select
-                    label="Blood Group"
-                    name="bloodGroup"
-                    value={formData.bloodGroup}
-                    onChange={handleChange}
-                  >
-                    {bloodGroups.map((group) => (
-                      <MenuItem key={group} value={group}>
-                        {group}
-                      </MenuItem>
-                    ))}
-                  </TextField>
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <TextField
-                    fullWidth
-                    label="Department"
-                    name="department"
-                    value={formData.department}
+                    label="Occupation"
+                    name="occupation"
+                    value={formData.occupation}
                     onChange={handleChange}
                   />
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <TextField
                     fullWidth
-                    label="Designation"
-                    name="designation"
-                    value={formData.designation}
+                    label="Aadhar Number"
+                    name="aadharNumber"
+                    value={formData.aadharNumber}
                     onChange={handleChange}
                   />
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <TextField
                     fullWidth
-                    label="School/College Name"
-                    name="schoolCollege"
-                    value={formData.schoolCollege}
+                    label="Father's Name"
+                    name="fatherName"
+                    value={formData.fatherName}
+                    onChange={handleChange}
+                  />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
+                    label="Address"
+                    name="address"
+                    value={formData.address}
                     onChange={handleChange}
                   />
                 </Grid>
 
                 {/* Address Section */}
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
+                    label="District"
+                    name="district"
+                    value={formData.district}
+                    onChange={handleChange}
+                  />
+                </Grid>
                 <Grid item xs={12} md={6}>
                   <TextField
                     fullWidth
@@ -286,53 +286,6 @@ const RegistrationForm = () => {
                       </MenuItem>
                     ))}
                   </TextField>
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <TextField
-                    fullWidth
-                    label="District"
-                    name="district"
-                    value={formData.district}
-                    onChange={handleChange}
-                  />
-                </Grid>
-
-                <Grid item xs={12} md={6}>
-                  <TextField
-                    fullWidth
-                    label="School Address"
-                    name="schoolAddress"
-                    value={formData.schoolAddress}
-                    onChange={handleChange}
-                  />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <TextField
-                    fullWidth
-                    label="Work/Job District"
-                    name="workJobDistrict"
-                    value={formData.workJobDistrict}
-                    onChange={handleChange}
-                  />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <TextField
-                    fullWidth
-                    label="Home Address"
-                    name="homeAddress"
-                    value={formData.homeAddress}
-                    onChange={handleChange}
-                  />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                 
-                <TextField
-                    fullWidth
-                    label="Home District"
-                    name="homeDistrict"
-                    value={formData.homeDistrict}
-                    onChange={handleChange}
-                  />
                 </Grid>
 
                 {/* Nominee Section */}
@@ -392,20 +345,27 @@ const RegistrationForm = () => {
                 </Grid>
 
                 {/* Health Information */}
-                <Grid item xs={12}>
+                <Grid item xs={12} md={6}>
                   <TextField
                     fullWidth
-                    multiline
-                    rows={4}
-                    label="Disease Description (if any)"
+                    label="Any Disease"
+                    name="disease"
+                    value={formData.disease}
+                    onChange={handleChange}
+                  />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
+                    label="Disease Description"
                     name="diseaseDescription"
                     value={formData.diseaseDescription}
                     onChange={handleChange}
                   />
                 </Grid>
 
-                {/* Already Registered Checkbox */}
-                <Grid item xs={12}>
+                {/* Contact Numbers */}
+                <Grid item xs={12} md={6}>
                   <TextField
                     fullWidth
                     label="Mobile Number"
@@ -416,16 +376,28 @@ const RegistrationForm = () => {
                     helperText={errors.mobileNumber}
                   />
                 </Grid>
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
+                    label="Home Mobile Number"
+                    name="homeMobileNumber"
+                    value={formData.homeMobileNumber}
+                    onChange={handleChange}
+                  />
+                </Grid>
+
+                {/* Declaration Checkbox */}
                 <Grid item xs={12}>
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="isAlreadyRegistered"
-                      checked={formData.isAlreadyRegistered}
-                      onChange={handleChange}
-                    />
-                    Already Registered
-                  </label>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={formData.declaration}
+                        onChange={handleChange}
+                        name="declaration"
+                      />
+                    }
+                    label="I hereby declare that all information provided is true to the best of my knowledge."
+                  />
                 </Grid>
 
                 {/* Submit Button */}
