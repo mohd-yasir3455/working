@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, Button, Menu, MenuItem, IconButton, Box, Drawer, List, ListItem, Divider, Container } from '@mui/material';
 import { Menu as MenuIcon, Close as CloseIcon } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
+import RegisterForm from '../../RegisterPage/RegisterPage';  // Importing the RegisterForm component
 
 // Styled components for custom styles
 const Logo = styled(Typography)(({ theme }) => ({
@@ -40,6 +41,7 @@ const DrawerList = styled(List)(({ theme }) => ({
 const Header = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [isRegisterFormOpen, setIsRegisterFormOpen] = useState(false); // New state for controlling the Register form
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -51,6 +53,10 @@ const Header = () => {
 
   const toggleDrawer = (open) => () => {
     setDrawerOpen(open);
+  };
+
+  const toggleRegisterForm = () => {
+    setIsRegisterFormOpen(!isRegisterFormOpen); // Toggle the register form
   };
 
   const drawer = (
@@ -138,6 +144,14 @@ const Header = () => {
               <MenuIcon />
             </IconButton>
           </Box>
+
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={toggleRegisterForm} // Opens the register form
+          >
+            Register
+          </Button>
         </Toolbar>
       </Container>
 
@@ -149,6 +163,9 @@ const Header = () => {
       >
         {drawer}
       </Drawer>
+
+      {/* Render RegisterForm component if isRegisterFormOpen is true */}
+      {isRegisterFormOpen && <RegisterForm />}
     </AppBar>
   );
 };
