@@ -11,8 +11,10 @@ import {
   Paper,
   Checkbox,
   FormControlLabel,
+  FormHelperText,
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Link } from "react-router-dom";
 
 const theme = createTheme({
   palette: {
@@ -81,6 +83,8 @@ const RegistrationForm = () => {
     mobileNumber: "",
     homeMobileNumber: "",
     declaration: false,
+    benefits: false,
+    rulesRead: false,  // Added field for rules
   });
 
   const [errors, setErrors] = useState({});
@@ -102,8 +106,10 @@ const RegistrationForm = () => {
     if (!formData.email) tempErrors.email = "Email is required.";
     if (!formData.gender) tempErrors.gender = "Please select your gender.";
     if (!formData.state) tempErrors.state = "State selection is required.";
-    if (!formData.mobileNumber)
-      tempErrors.mobileNumber = "Mobile number is required.";
+    if (!formData.mobileNumber) tempErrors.mobileNumber = "Mobile number is required.";
+    if (!formData.aadharNumber.match(/^\d{12}$/)) tempErrors.aadharNumber = "Aadhar number must be a 12-digit number.";
+    if (!formData.declaration) tempErrors.declaration = "You must declare that the information is correct.";
+    if (!formData.rulesRead) tempErrors.rulesRead = "You must confirm that you have read the rules.";
     return tempErrors;
   };
 
@@ -238,6 +244,9 @@ const RegistrationForm = () => {
                     name="aadharNumber"
                     value={formData.aadharNumber}
                     onChange={handleChange}
+                    error={!!errors.aadharNumber}
+                    helperText={errors.aadharNumber}
+                    inputProps={{ pattern: "[0-9]*", maxLength: 12 }}
                   />
                 </Grid>
                 <Grid item xs={12} md={6}>
@@ -311,9 +320,11 @@ const RegistrationForm = () => {
                   <TextField
                     fullWidth
                     label="Nominee 1 Mobile"
+                   
                     name="nominee1Mobile"
                     value={formData.nominee1Mobile}
                     onChange={handleChange}
+                    inputProps={{ pattern: "[0-9]*", maxLength: 10 }}
                   />
                 </Grid>
                 <Grid item xs={12} md={6}>
@@ -341,10 +352,35 @@ const RegistrationForm = () => {
                     name="nominee2Mobile"
                     value={formData.nominee2Mobile}
                     onChange={handleChange}
+                    inputProps={{ pattern: "[0-9]*", maxLength: 10 }}
                   />
                 </Grid>
 
-                {/* Health Information */}
+                {/* Contact Info */}
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
+                    label="Mobile Number"
+                    name="mobileNumber"
+                    value={formData.mobileNumber}
+                    onChange={handleChange}
+                    error={!!errors.mobileNumber}
+                    helperText={errors.mobileNumber}
+                    inputProps={{ pattern: "[0-9]*", maxLength: 10 }}
+                  />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
+                    label="Home Mobile Number"
+                    name="homeMobileNumber"
+                    value={formData.homeMobileNumber}
+                    onChange={handleChange}
+                    inputProps={{ pattern: "[0-9]*", maxLength: 10 }}
+                  />
+                </Grid>
+
+                {/* Health Info */}
                 <Grid item xs={12} md={6}>
                   <TextField
                     fullWidth
@@ -364,29 +400,7 @@ const RegistrationForm = () => {
                   />
                 </Grid>
 
-                {/* Contact Numbers */}
-                <Grid item xs={12} md={6}>
-                  <TextField
-                    fullWidth
-                    label="Mobile Number"
-                    name="mobileNumber"
-                    value={formData.mobileNumber}
-                    onChange={handleChange}
-                    error={!!errors.mobileNumber}
-                    helperText={errors.mobileNumber}
-                  />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <TextField
-                    fullWidth
-                    label="Home Mobile Number"
-                    name="homeMobileNumber"
-                    value={formData.homeMobileNumber}
-                    onChange={handleChange}
-                  />
-                </Grid>
-
-                {/* Declaration Checkbox */}
+                {/* Declaration and Additional Checkboxes */}
                 <Grid item xs={12}>
                   <FormControlLabel
                     control={
@@ -396,19 +410,57 @@ const RegistrationForm = () => {
                         name="declaration"
                       />
                     }
-                    label="I hereby declare that all information provided is true to the best of my knowledge."
+                    label="I declare that the information provided is correct."
+                  />
+                  {errors.declaration && <FormHelperText error>{errors.declaration}</FormHelperText>}
+                </Grid>
+                <Grid item xs={12}>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={formData.rulesRead}
+                        onChange={handleChange}
+                        name="rulesRead"
+                      />
+                    }
+                    label="I have read and agree to the rules."
+                  />
+                  {errors.rulesRead && <FormHelperText error>{errors.rulesRead}</FormHelperText>}
+                </Grid>
+                <Grid item xs={12}>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={formData.benefits}
+                        onChange={handleChange}
+                        name="benefits"
+                      />
+                    }
+                    label="Do you want to receive benefits?"
                   />
                 </Grid>
 
-                {/* Submit Button */}
-                <Grid item xs={12}>
+                {/* Buttons */}
+                <Grid item xs={12} md={6}>
                   <Button
+                    fullWidth
                     type="submit"
                     variant="contained"
                     color="primary"
-                    fullWidth
+                    size="large"
                   >
                     Submit
+                  </Button>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Button
+                    component={Link}
+                    to="/login"
+                    fullWidth
+                    variant="outlined"
+                    size="large"
+                  >
+                    Go to Login
                   </Button>
                 </Grid>
               </Grid>

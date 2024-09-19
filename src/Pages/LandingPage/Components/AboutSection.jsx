@@ -21,8 +21,12 @@ const AboutSection = () => {
           About Us
         </Typography>
         <Typography variant="body1" paragraph>
-          We are a non-profit organization dedicated to helping communities in need through various programs
-          and initiatives. Our mission is to create sustainable change and improve the lives of those we serve.
+      
+BEES Foundation is working in the area of education since last 7 years in which it provides free education to underprivileged children. Along with this, the foundation is also working on environment and evils of society like levish wedding.
+The objective of BEES Foundation is to reform and promote education.
+BEES Foundation has recently taken a new initiative in which it will help the families of members of the Foundation by giving them a good amount of money in case of their untimely death. 
+And in case of a serious accident the member will also be helped.
+
         </Typography>
       </Container>
     </Box>

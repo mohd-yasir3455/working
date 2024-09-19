@@ -79,11 +79,11 @@ const Crousal = () => {
   const slides = [
     {
       src: 'https://via.placeholder.com/1200x600',
-      caption: 'Slide 1 Caption',
+      caption: 'welcome to BEES Foundation',
     },
     {
       src: 'https://via.placeholder.com/1200x600',
-      caption: 'Slide 2 Caption',
+      caption: 'help and reform society ',
     },
     {
       src: 'https://via.placeholder.com/1200x600',
