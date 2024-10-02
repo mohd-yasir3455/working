@@ -84,7 +84,7 @@ const RegistrationForm = () => {
     homeMobileNumber: "",
     declaration: false,
     benefits: false,
-    rulesRead: false,  // Added field for rules
+    rulesRead: false,
   });
 
   const [errors, setErrors] = useState({});
@@ -113,11 +113,29 @@ const RegistrationForm = () => {
     return tempErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const tempErrors = validate();
     if (Object.keys(tempErrors).length === 0) {
-      console.log(formData);
+      try {
+        const response = await fetch('http://localhost:5000/api/form', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          alert('Registration successful');
+          // Optionally, redirect to another page or clear the form
+        } else {
+          alert('Registration failed');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Registration failed');
+      }
     } else {
       setErrors(tempErrors);
     }
@@ -297,11 +315,11 @@ const RegistrationForm = () => {
                   </TextField>
                 </Grid>
 
-                {/* Nominee Section */}
+                {/* Nominee Details */}
                 <Grid item xs={12} md={6}>
                   <TextField
                     fullWidth
-                    label="Nominee 1"
+                    label="Nominee 1 Name"
                     name="nominee1"
                     value={formData.nominee1}
                     onChange={handleChange}
@@ -320,77 +338,23 @@ const RegistrationForm = () => {
                   <TextField
                     fullWidth
                     label="Nominee 1 Mobile"
-                   
                     name="nominee1Mobile"
                     value={formData.nominee1Mobile}
                     onChange={handleChange}
-                    inputProps={{ pattern: "[0-9]*", maxLength: 10 }}
-                  />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <TextField
-                    fullWidth
-                    label="Nominee 2"
-                    name="nominee2"
-                    value={formData.nominee2}
-                    onChange={handleChange}
-                  />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <TextField
-                    fullWidth
-                    label="Relation with Nominee 2"
-                    name="relationWithNominee2"
-                    value={formData.relationWithNominee2}
-                    onChange={handleChange}
-                  />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <TextField
-                    fullWidth
-                    label="Nominee 2 Mobile"
-                    name="nominee2Mobile"
-                    value={formData.nominee2Mobile}
-                    onChange={handleChange}
-                    inputProps={{ pattern: "[0-9]*", maxLength: 10 }}
                   />
                 </Grid>
 
-                {/* Contact Info */}
-                <Grid item xs={12} md={6}>
+                {/* Disease Information */}
+                <Grid item xs={12}>
                   <TextField
                     fullWidth
-                    label="Mobile Number"
-                    name="mobileNumber"
-                    value={formData.mobileNumber}
-                    onChange={handleChange}
-                    error={!!errors.mobileNumber}
-                    helperText={errors.mobileNumber}
-                    inputProps={{ pattern: "[0-9]*", maxLength: 10 }}
-                  />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <TextField
-                    fullWidth
-                    label="Home Mobile Number"
-                    name="homeMobileNumber"
-                    value={formData.homeMobileNumber}
-                    onChange={handleChange}
-                    inputProps={{ pattern: "[0-9]*", maxLength: 10 }}
-                  />
-                </Grid>
-
-                {/* Health Info */}
-                <Grid item xs={12} md={6}>
-                  <TextField
-                    fullWidth
-                    label="Any Disease"
+                    label="Do you have any disease?"
                     name="disease"
                     value={formData.disease}
                     onChange={handleChange}
                   />
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12}>
                   <TextField
                     fullWidth
                     label="Disease Description"
@@ -400,17 +364,39 @@ const RegistrationForm = () => {
                   />
                 </Grid>
 
-                {/* Declaration and Additional Checkboxes */}
+                {/* Contact Information */}
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
+                    label="Mobile Number"
+                    name="mobileNumber"
+                    value={formData.mobileNumber}
+                    onChange={handleChange}
+                    error={!!errors.mobileNumber}
+                    helperText={errors.mobileNumber}
+                  />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
+                    label="Home Mobile Number"
+                    name="homeMobileNumber"
+                    value={formData.homeMobileNumber}
+                    onChange={handleChange}
+                  />
+                </Grid>
+
+                {/* Declaration and Rules */}
                 <Grid item xs={12}>
                   <FormControlLabel
                     control={
                       <Checkbox
+                        name="declaration"
                         checked={formData.declaration}
                         onChange={handleChange}
-                        name="declaration"
                       />
                     }
-                    label="I declare that the information provided is correct."
+                    label="I declare that all information provided is correct."
                   />
                   {errors.declaration && <FormHelperText error>{errors.declaration}</FormHelperText>}
                 </Grid>
@@ -418,29 +404,17 @@ const RegistrationForm = () => {
                   <FormControlLabel
                     control={
                       <Checkbox
+                        name="rulesRead"
                         checked={formData.rulesRead}
                         onChange={handleChange}
-                        name="rulesRead"
                       />
                     }
-                    label="I have read and agree to the rules."
+                    label="I have read and understood the rules."
                   />
                   {errors.rulesRead && <FormHelperText error>{errors.rulesRead}</FormHelperText>}
                 </Grid>
-                <Grid item xs={12}>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={formData.benefits}
-                        onChange={handleChange}
-                        name="benefits"
-                      />
-                    }
-                    label="Do you want to receive benefits?"
-                  />
-                </Grid>
 
-                {/* Buttons */}
+                {/* Submit and Redirect */}
                 <Grid item xs={12} md={6}>
                   <Button
                     fullWidth

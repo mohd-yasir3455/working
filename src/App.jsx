@@ -5,6 +5,8 @@ import RegisterPage from './Pages/RegisterPage/RegisterPage';
 import LoginPage from './Pages/LoginPage/LoginPage';
 import About from '../src/Pages/LandingPage/Components/about'
 import RulesPage from "./Pages/LandingPage/Components/RulesPage"
+import ProjectsSection from './Pages/LandingPage/Components/ProjectSection';
+import CreativeGallery from './Pages/LandingPage/Components/CreativeGallery';
 const App = () => {
   return (
     <Router>
@@ -17,6 +19,8 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/rules" element={<RulesPage />} />
+        <Route path="/objective" element={<ProjectsSection />} />
+        <Route path="/gallery" element={<CreativeGallery />} />
       </Routes>
     </Router>
   );

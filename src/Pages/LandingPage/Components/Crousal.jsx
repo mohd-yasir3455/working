@@ -2,6 +2,8 @@ import React from 'react';
 import Slider from 'react-slick';
 import { Box, Typography, IconButton } from '@mui/material';
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
+import image1 from '../Components/images/crousal1.jpg'
+import image2  from '../Components/images/crousal2.jpg'
 
 // Custom arrow components for better styling
 const CustomPrevArrow = ({ onClick }) => (
@@ -78,11 +80,11 @@ const Crousal = () => {
 
   const slides = [
     {
-      src: 'https://via.placeholder.com/1200x600',
+      src: image1,
       caption: 'welcome to BEES Foundation',
     },
     {
-      src: 'https://via.placeholder.com/1200x600',
+      src: image2,
       caption: 'help and reform society ',
     },
     {

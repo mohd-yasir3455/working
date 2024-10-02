@@ -13,7 +13,9 @@ const Header = () => {
     Home: '/',
     'About Us': '/about',
     Rules: '/rules',
-    Contact: '/contact'
+    Contact: '/contact',
+    Objective: '/objective', // New Objective route
+    Gallery: '/gallery', // Added Gallery route
   };
 
   const toggleDrawer = (open) => () => {
@@ -42,7 +44,7 @@ const Header = () => {
 
           {/* Desktop Menu */}
           <Box sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
-            {['Home', 'About Us', 'Rules', 'Contact'].map((text) => (
+            {['Home', 'About Us', 'Rules', 'Contact', 'Objective', 'Gallery'].map((text) => ( // Added 'Gallery'
               <Button
                 key={text}
                 component={Link} // Use Link component for navigation
@@ -102,7 +104,7 @@ const Header = () => {
 
             {/* Drawer List */}
             <List sx={{ textAlign: 'center' }}>
-              {['Home', 'About Us', 'Rules', 'Contact'].map((text) => (
+              {['Home', 'About Us', 'Rules', 'Contact', 'Objective', 'Gallery'].map((text) => ( // Added 'Gallery'
                 <ListItem button key={text} component={Link} to={routes[text]}>
                   {text}
                 </ListItem>
