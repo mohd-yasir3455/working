@@ -7,7 +7,7 @@ const VideoCard = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const videoId = 'GM60VScqPiM'; // Extracted from the YouTube link
+  const videoId = 'Yr6SKJB5PLc'; // Extracted from the YouTube link
 
   return (
     <>
@@ -17,12 +17,12 @@ const VideoCard = () => {
           component="img"
           alt="YouTube Video Thumbnail"
           height="140"
-          image={`https://img.youtube.com/vi/${videoId}/0.jpg`}
+          image={`https://img.youtube.com/vi/${videoId}/0.jpg`} // Fetch thumbnail from YouTube
           title="YouTube Video"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-         Introduction to BEES Foundation
+            Introduction to BEES Foundation
           </Typography>
           <Typography variant="body2" color="text.secondary">
             Click to watch the video.
@@ -46,7 +46,7 @@ const VideoCard = () => {
         >
           <iframe
             style={{ width: '100%', height: '400px' }}
-            src={`https://www.youtube.com/embed/${videoId}`}
+            src={`https://www.youtube.com/embed/${videoId}`} // Embed YouTube video
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

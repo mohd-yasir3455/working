@@ -13,7 +13,7 @@ const Header = () => {
     Home: '/',
     'About Us': '/about',
     Rules: '/rules',
-    Contact: '/contact',
+    FAQS: '/faq',
     Objective: '/objective', // New Objective route
     Gallery: '/gallery', // Added Gallery route
   };
@@ -44,7 +44,7 @@ const Header = () => {
 
           {/* Desktop Menu */}
           <Box sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
-            {['Home', 'About Us', 'Rules', 'Contact', 'Objective', 'Gallery'].map((text) => ( // Added 'Gallery'
+            {['Home', 'About Us', 'Rules', 'FAQS', 'Objective', 'Gallery'].map((text) => ( // Added 'Gallery'
               <Button
                 key={text}
                 component={Link} // Use Link component for navigation
@@ -60,12 +60,12 @@ const Header = () => {
               </Button>
             ))}
             <Button onClick={handleMenuClick} sx={{ color: '#333', fontWeight: 'bold' }}>
-              Services
+           Services
             </Button>
             <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleCloseMenu}>
-              <MenuItem onClick={handleCloseMenu}>Service 1</MenuItem>
-              <MenuItem onClick={handleCloseMenu}>Service 2</MenuItem>
-              <MenuItem onClick={handleCloseMenu}>Service 3</MenuItem>
+              <MenuItem onClick={handleCloseMenu}>Coding Classes</MenuItem>
+              <MenuItem onClick={handleCloseMenu}>English Classes</MenuItem>
+              <MenuItem onClick={handleCloseMenu}>Helping Environment</MenuItem>
             </Menu>
           </Box>
 

@@ -113,7 +113,7 @@ const Footer = () => {
         {/* Copyright Section */}
         <Box mt={4} textAlign="center">
           <Typography variant="body2" color="inherit">
-            © {new Date().getFullYear()} Mydanjari. All Rights Reserved.
+            © {new Date().getFullYear()} BEES Foundation. All Rights Reserved.
           </Typography>
         </Box>
       </Container>
