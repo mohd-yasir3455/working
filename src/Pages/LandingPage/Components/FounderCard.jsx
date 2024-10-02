@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardContent, Typography, Box } from '@mui/material';
-import founderImage from './anas1.jpg'; // Replace with the actual path to your image
+import founderImage from '../Components/images/anas.jpg'; // Replace with the actual path to your image
 
 const FounderCard = () => {
   return (

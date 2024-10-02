@@ -9,8 +9,17 @@ const ContactSection = () => {
         <Typography variant="h4" gutterBottom>
           Contact Us
         </Typography>
-        <Typography variant="body1">
-          Email: info@ngoname.org | Phone: +123-456-7890
+
+        <Typography variant="body1" sx={{ margin: "10px 0", fontWeight: 500 }}>
+          Address: 853/4, Amba Vihar, Muzaffarnagar, U.P, India
+        </Typography>
+
+        <Typography variant="body1" sx={{ margin: "10px 0" }}>
+          Email: <a href="mailto:beesfeedback@gmail.com" style={{ color: "#333", textDecoration: "none" }}>beesfeedback@gmail.com</a>
+        </Typography>
+
+        <Typography variant="body1" sx={{ margin: "10px 0" }}>
+          Contact Us: 70-3735-8787
         </Typography>
       </Container>
     </Box>
