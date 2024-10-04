@@ -22,11 +22,16 @@ const AboutSection = () => {
         </Typography>
         <Typography variant="body1" paragraph>
       
-BEES Foundation is working in the area of education since last 7 years in which it provides free education to underprivileged children. Along with this, the foundation is also working on environment and evils of society like levish wedding.
+        BEES Foundation is working in the area of education for last 7 years in which it provides free education to
+underprivileged children. Along with this, the Foundation is also working on environment and evils of society
+like levish wedding.
 The objective of BEES Foundation is to reform and promote education.
-BEES Foundation has recently taken a new initiative in which it will help the families of members of the Foundation by giving them a good amount of money in case of their untimely death. 
+Today, education is limited to employment only. Our aim is to create such a person through education who can
+do something good for the society and the country. If he is a doctor then he must be a true doctor who has the
+desire to serve the patient before earning money.
+BEES Foundation has recently taken a new initiative in which it will help the families of members of the
+Foundation by giving them a good amount of money in case of their untimely death.
 And in case of a serious accident the member will also be helped.
-
         </Typography>
       </Container>
     </Box>
