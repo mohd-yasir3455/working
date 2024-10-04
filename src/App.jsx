@@ -12,6 +12,10 @@ import Header from './Pages/LandingPage/Components/Header';
 import Footer from './Pages/LandingPage/Components/lastfooter';
 import PhoneIcon from './Pages/LandingPage/Components/PhoneIcon'
 import WhatsAppFloatingButton from './Pages/LandingPage/Components/WhatsAppFloatingButton';
+import coding from './Pages/services/coding.jsx'
+import english from './Pages/services/english.jsx'
+import env from './Pages/services/environment.jsx'
+
 const App = () => {
   return (
     
@@ -28,6 +32,10 @@ const App = () => {
         <Route path="/rules" element={<RulesPage />} />
         <Route path="/objective" element={<ProjectsSection />} />
         <Route path="/gallery" element={<CreativeGallery />} />
+
+        <Route path="/services/coding" element={<coding/>} />
+        <Route path="/services/english" element={<english />} />
+        <Route path="/services/environment" element={<env />} />
       </Routes>
     <Footer/>
     </Router>

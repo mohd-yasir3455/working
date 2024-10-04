@@ -91,7 +91,7 @@ const FounderCard = () => {
               textAlign: { xs: 'center', sm: 'left' },
             }}
           >
-            John Doe began his journey in the tech industry in 1995, fueled by his passion for innovation and change. Over the years, he founded several successful startups and led teams to achieve remarkable milestones. His vision for the future is to create a company that drives positive change through cutting-edge technology and deep-rooted values of integrity and excellence.
+         Syed Mohd Anas is a visionary teacher. He entered the field of education with the intention of bringing about change through education. He started his teaching journey from Delhi in 2013. In 2015, he returned to his hometown Muzaffarnagar, UP and started working for education here too while he was still a student himself. In 2016, he started teaching underprivileged children in a slum near his home. His aim of teaching is not only to impart literacy but also to make the child realize his potential and become a good human being, the kind of person that society needs very much today. In 2017, he founded the BEES Foundation, whose main objective is to promote education among the poor and reform education. Along with working at the ground level, he also works on peace and brotherhood in the society through his videos and writings. Apart from this, he is also continuously working for the environment and is working against a major evil in society- expensive marriages, on which he has also written a booklet.
           </Typography>
           <Typography
             variant="body1"

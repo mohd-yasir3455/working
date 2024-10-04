@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AppBar, Toolbar, Button, Menu, MenuItem, IconButton, Box, Drawer, List, ListItem, Container, Divider } from '@mui/material';
 import { Menu as MenuIcon, Close as CloseIcon } from '@mui/icons-material';
 import { useNavigate, Link } from 'react-router-dom'; // For navigation
+import logo1 from './images/logo1.jpg'
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -39,7 +40,7 @@ const Header = () => {
         <Toolbar sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
           {/* Logo */}
           <Box sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }} onClick={() => navigate('/')}>
-            <img src="/logo.png" alt="BEES Foundation" style={{ height: 40 }} />
+            <img src={logo1} alt="BEES Foundation" style={{ height: 40 }} />
           </Box>
 
           {/* Desktop Menu */}
@@ -63,10 +64,17 @@ const Header = () => {
            Services
             </Button>
             <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleCloseMenu}>
-              <MenuItem onClick={handleCloseMenu}>Coding Classes</MenuItem>
-              <MenuItem onClick={handleCloseMenu}>English Classes</MenuItem>
-              <MenuItem onClick={handleCloseMenu}>Helping Environment</MenuItem>
-            </Menu>
+  <MenuItem component={Link} to="/services/coding" onClick={handleCloseMenu}>
+    Coding Classes
+  </MenuItem>
+  <MenuItem component={Link} to="/services/english" onClick={handleCloseMenu}>
+    English Classes
+  </MenuItem>
+  <MenuItem component={Link} to="/services/environment" onClick={handleCloseMenu}>
+    Helping Environment
+  </MenuItem>
+</Menu>
+
           </Box>
 
           {/* Register and Login Buttons */}
