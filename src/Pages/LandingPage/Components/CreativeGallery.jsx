@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Box, Grid, Dialog, Typography, IconButton } from '@mui/material';
+import { Box,  Dialog, Typography, IconButton } from '@mui/material';
+import Grid from '@mui/material/Grid2'
 import CloseIcon from '@mui/icons-material/Close';
 import image1 from '../Components/images/anas.jpg';
 import image2 from '../Components/images/anas1.jpg';

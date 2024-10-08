@@ -12,7 +12,7 @@ const AboutSection = () => {
       sx={{
         backgroundColor: "#fff",
         color: "#333",
-        padding: isSmallScreen ? "30px 0" : "50px 0",
+        padding: isSmallScreen ? "30px 0" : "50px  50px",
         textAlign: isSmallScreen ? "center" : "left",
       }}
     >

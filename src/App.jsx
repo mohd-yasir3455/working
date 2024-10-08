@@ -1,4 +1,5 @@
 import React from 'react';
+import {Box} from '@mui/material'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import RegisterPage from './Pages/RegisterPage/RegisterPage';
@@ -15,6 +16,7 @@ import WhatsAppFloatingButton from './Pages/LandingPage/Components/WhatsAppFloat
 import coding from './Pages/services/coding.jsx'
 import english from './Pages/services/english.jsx'
 import env from './Pages/services/environment.jsx'
+import { Margin } from '@mui/icons-material';
 
 const App = () => {
   return (
@@ -32,12 +34,13 @@ const App = () => {
         <Route path="/rules" element={<RulesPage />} />
         <Route path="/objective" element={<ProjectsSection />} />
         <Route path="/gallery" element={<CreativeGallery />} />
-
         <Route path="/services/coding" element={<coding/>} />
         <Route path="/services/english" element={<english />} />
         <Route path="/services/environment" element={<env />} />
       </Routes>
-    <Footer/>
+      <Box   sx = {{marginTop : "60px"}}>
+        <Footer/>
+      </Box>
     </Router>
   );
 };

@@ -3,7 +3,7 @@ import { Box, Typography, Container } from '@mui/material';
 
 const about = () => {
   return (
-    <Container maxWidth="md" sx={{ mt: 5, mb: 5 }}>
+    <Container maxWidth="md" sx={{ mt: 5, mb: 20 }}>
       <Box sx={{ textAlign: 'center', mb: 3 }}>
         <Typography variant="h4" component="h1" sx={{ fontWeight: 'bold', color: '#333' }}>
           About BEES Foundation
