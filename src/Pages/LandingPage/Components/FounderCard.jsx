@@ -69,7 +69,7 @@ const FounderCard = () => {
               textAlign: { xs: 'center', sm: 'left' },
             }}
           >
-            John Doe
+           SYED MOHD ANAS
           </Typography>
           <Typography
             variant="subtitle1"
@@ -80,7 +80,7 @@ const FounderCard = () => {
               textAlign: { xs: 'center', sm: 'left' },
             }}
           >
-            Founder & Visionary Leader
+            Founder & Visionary Teacher
           </Typography>
           <Typography
             variant="body1"
