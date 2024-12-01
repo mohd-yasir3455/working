@@ -1,30 +1,30 @@
 import React from 'react';
 import { Box, Card, CardContent, CardMedia, Typography, Grid } from '@mui/material';
 
-import image1 from '../Components/images/crousal1.jpg'; // Ensure correct path
-import image2 from '../Components/images/crousal2.jpg'; // Ensure correct path
-import image3 from '../Components/images/crousal1.jpg'; // Add this line for the third image
+import image1 from '../Components/images/t5.jpg'; // Ensure correct path
+import image2 from '../Components/images/t1.jpg'; // Ensure correct path
+import image3 from '../Components/images/t4.jpg'; // Add this line for the third image
 
 const CardGroup = () => {
   // Sample card data
   const cards = [
     {
-      title: 'Card Title 1',
-      text: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.',
+      title: 'Trees Plantation ',
+      text: 'Promoting and awaring the society for a sustainable lifestyle by educating communities on the importance of protecting natural resources and reducing pollution for a healthier planet.',
       imgSrc: image1, // Directly reference the imported image
-      updated: 'Last updated 3 mins ago',
+      updated: 'working from 4 year ago',
     },
     {
-      title: 'Card Title 2',
-      text: 'This card has supporting text below as a natural lead-in to additional content.',
+      title: 'Awareness on Garbage Burning',
+      text: 'Spreading awareness about the harmful effects of garbage burning, advocating for proper waste disposal, and encouraging eco-friendly alternatives to protect the environment and public health',
       imgSrc: image2, // Directly reference the imported image
-      updated: 'Last updated 3 mins ago',
+      updated: 'working from 5 year ',
     },
     {
-      title: 'Card Title 3',
-      text: 'This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.',
+      title: 'Educating Needy Students',
+      text: 'Empowering underprivileged children through quality education and skill development to ensure a brighter future and equal opportunities.',
       imgSrc: image3, // Ensure this variable is defined
-      updated: 'Last updated 3 mins ago',
+      updated: 'working from 7+ years ago',
     },
   ];
 

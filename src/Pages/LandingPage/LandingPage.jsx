@@ -13,6 +13,8 @@ import VideoComponent from './Components/VideoComponent';
 
 import CardDeck from './Components/CardDeck';
 import FAQSection from './Components/FAQSection';
+import Stat from './Components/Stat';
+import MiniFAQ from './Components/miniFAQ';
 
 
 const LandingPage = () => {
@@ -23,11 +25,12 @@ const LandingPage = () => {
       <FounderCard/>
       <HeroSection />
       <AboutSection />
-    
       <VideoComponent/>
       <CardDeck/>
-      <ContactSection />
-   
+    
+      <Stat/>
+      <MiniFAQ/>
+ 
     
     </>
   );

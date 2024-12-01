@@ -1,114 +1,103 @@
 import React from 'react';
-import { Card, CardContent, Typography, Box } from '@mui/material';
-import founderImage from '../Components/images/anas.jpg'; // Replace with the actual path to your image
+import { useTheme } from '@mui/material/styles';
+import { Box, Typography, Container } from '@mui/material';
+import img from '../Components/images/anas1.jpg'; // Update this path to your actual image file
+import '@fontsource/poppins'; // Importing Poppins font
 
-const FounderCard = () => {
+const SubscribeSection = () => {
+  const theme = useTheme(); // Access the theme
+
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        width: '100%',
-        padding: 1,
-        boxSizing: 'border-box',
+    <section
+      style={{
+        backgroundColor: theme.palette.background.default,
+        color: theme.palette.text.primary,
+        padding: theme.spacing(4),
+        fontFamily: 'Poppins, sans-serif', // Apply Poppins font
       }}
     >
-      <Card
+      <Container
+        maxWidth="lg"
         sx={{
-          display: 'flex',
-          flexDirection: { xs: 'column', sm: 'row' },
-          backgroundColor: '#f4f4f9',
-          borderRadius: '10px',
-          boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-          overflow: 'hidden',
-          width: '100%',
-          maxWidth: '100%',
-          boxSizing: 'border-box',
+          padding: theme.spacing(4), // Adjust padding around the content
+          margin: '0 auto', // Center container horizontally
+          borderRadius: theme.shape.borderRadius, // Apply border radius
+          boxShadow: theme.shadows[6], // Increase shadow for more depth
+          // background: 'linear-gradient(135deg, #FF7E5F 0%, #FFAE8F 100%)', // Orange gradient
         }}
       >
-        {/* Image Container */}
         <Box
-          sx={{
-            flex: { xs: '0 1 auto', sm: '0 1 40%' },
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            overflow: 'hidden',
-            height: { xs: 'auto', sm: '100%' },
-          }}
+          display="flex"
+          flexDirection={{ xs: 'column', md: 'row' }}
+          alignItems="center"
+          justifyContent="center"
+          textAlign={{ xs: 'center', md: 'left' }} // Center on mobile, left on desktop
+          sx={{ gap: theme.spacing(4) }} // Add space between image and text
         >
-          <img
-            src={founderImage}
-            alt="Founder"
-            style={{
-              width: '100%',
-              height: 'auto', // Maintain aspect ratio by setting height to auto
-              objectFit: 'contain', // Ensure the entire image fits inside the container without cropping
-              objectPosition: 'center', // Center the image within its container
+          {/* Image Section */}
+          <Box
+            sx={{
+              width: { xs: '80%', sm: '60%', md: '33%' },
+              height: 'auto',
+              marginBottom: { xs: theme.spacing(3), md: 0 },
+              borderRadius: theme.shape.borderRadius,
+              overflow: 'hidden',
             }}
-          />
-        </Box>
+          >
+            <img
+              src={img}
+              alt="Syed Mohd Anas"
+              style={{
+                width: '100%',
+                height: 'auto',
+                objectFit: 'cover',
+                display: 'block',
+                margin: '0 auto', // Center image in mobile view
+              }}
+            />
+          </Box>
 
-        {/* Text Container */}
-        <CardContent
-          sx={{
-            flex: { xs: '0 1 auto', sm: '0 1 60%' },
-            padding: { xs: 2, sm: 4 },
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            boxSizing: 'border-box',
-          }}
-        >
-          <Typography
-            variant="h4"
+          {/* Content Section */}
+          <Box
             sx={{
-              fontSize: '1.5rem',
-              color: '#1e3a61',
-              marginBottom: 2,
-              textAlign: { xs: 'center', sm: 'left' },
+              width: { xs: '100%', md: '67%' },
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: { xs: 'center', md: 'flex-start' }, // Center on mobile, align left on desktop
+              paddingX: { xs: theme.spacing(2), md: theme.spacing(4) },
             }}
           >
-           SYED MOHD ANAS
-          </Typography>
-          <Typography
-            variant="subtitle1"
-            sx={{
-              fontSize: '1rem',
-              color: '#7b8a8b',
-              marginBottom: 1,
-              textAlign: { xs: 'center', sm: 'left' },
-            }}
-          >
-            Founder & Visionary Teacher
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{
-              fontSize: '0.875rem',
-              color: '#333',
-              lineHeight: 1.6,
-              textAlign: { xs: 'center', sm: 'left' },
-            }}
-          >
-         Syed Mohd Anas is a visionary teacher. He entered the field of education with the intention of bringing about change through education. He started his teaching journey from Delhi in 2013. In 2015, he returned to his hometown Muzaffarnagar, UP and started working for education here too while he was still a student himself. In 2016, he started teaching underprivileged children in a slum near his home. His aim of teaching is not only to impart literacy but also to make the child realize his potential and become a good human being, the kind of person that society needs very much today. In 2017, he founded the BEES Foundation, whose main objective is to promote education among the poor and reform education. Along with working at the ground level, he also works on peace and brotherhood in the society through his videos and writings. Apart from this, he is also continuously working for the environment and is working against a major evil in society- expensive marriages, on which he has also written a booklet.
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{
-              fontSize: '0.875rem',
-              color: '#333',
-              lineHeight: 1.6,
-              marginTop: 2,
-              textAlign: { xs: 'center', sm: 'left' },
-            }}
-          >
-            "Our mission is to harness the power of technology to make the world a better place, one innovation at a time."
-          </Typography>
-        </CardContent>
-      </Card>
-    </Box>
+            <Typography
+              variant="h2"
+              component="h2"
+              sx={{
+                fontWeight: '700', // Bold header for better visibility
+                marginBottom: theme.spacing(2),
+                color: '#f57223', // Dark text color for better contrast
+                textAlign: { xs: 'center', md: 'left' }, // Center on mobile
+                fontFamily: 'Poppins, sans-serif', // Poppins font for header
+              }}
+            >
+              SYED MOHD ANAS
+            </Typography>
+            <Typography
+              variant="body1"
+              paragraph
+              sx={{
+                lineHeight: 1.8,
+                color: '#333', // Darken text color for readability
+                textAlign: { xs: 'center', md: 'left' }, // Center text on mobile
+                fontFamily: 'Poppins, sans-serif', // Poppins font for body text
+              }}
+            >
+              Syed Mohd Anas is a visionary teacher. He entered the field of education with the intention of bringing about change through education. He started his teaching journey from Delhi in 2013. In 2015, he returned to his hometown Muzaffarnagar, UP and started working for education here too while he was still a student himself. In 2016, he started teaching underprivileged children in a slum near his home. His aim of teaching is not only to impart literacy but also to make the child realize his potential and become a good human being, the kind of person that society needs very much today. In 2017, he founded the BEES Foundation, whose main objective is to promote education among the poor and reform education. Along with working at the ground level, he also works on peace and brotherhood in the society through his videos and writings. Apart from this, he is also continuously working for the environment and is working against a major evil in society—expensive marriages, on which he has also written a book.
+            </Typography>
+          </Box>
+        </Box>
+      </Container>
+    </section>
   );
 };
 
-export default FounderCard;
+export default SubscribeSection;

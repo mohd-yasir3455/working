@@ -1,156 +1,109 @@
-import React, { useState } from 'react';
-import { AppBar, Toolbar, Button, Menu, MenuItem, IconButton, Box, Drawer, List, ListItem, Container, Divider } from '@mui/material';
-import { Menu as MenuIcon, Close as CloseIcon } from '@mui/icons-material';
-import { useNavigate, Link } from 'react-router-dom'; // For navigation
-import logo1 from './images/logo1.jpg'
+import React from 'react';
+import { Button, Container, Nav, Navbar, NavDropdown, Offcanvas } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import logo1 from './images/logo1.jpg';
 
-const Header = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [drawerOpen, setDrawerOpen] = useState(false);
+function OffcanvasExample() {
   const navigate = useNavigate();
-
-  // Define routes
   const routes = {
     Home: '/',
     'About Us': '/about',
     Rules: '/rules',
     FAQS: '/faq',
-    Objective: '/objective', // New Objective route
-    Gallery: '/gallery', // Added Gallery route
-  };
-
-  const toggleDrawer = (open) => () => {
-    setDrawerOpen(open);
-  };
-
-  const handleMenuClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleCloseMenu = () => {
-    setAnchorEl(null);
+    Objective: '/objective',
+    Gallery: '/gallery',
   };
 
   return (
-    <AppBar
-      position="static"
-      sx={{ backgroundColor: '#fff', borderBottom: '1px solid #ddd', padding: { xs: '0 8px', md: '0 16px' } }}
-    >
-      <Container maxWidth="lg">
-        <Toolbar sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
-          {/* Logo */}
-          <Box sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }} onClick={() => navigate('/')}>
-            <img src={logo1} alt="BEES Foundation" style={{ height: 40 }} />
-          </Box>
+    <>
+      {['md'].map((expand) => (
+        <Navbar key={expand} expand={expand} bg="light" className="mb-3" sticky="top">
+          <Container fluid>
+            {/* Logo */}
+            <Navbar.Brand href="#" onClick={() => navigate('/')}>
+              <img src={logo1} alt="BEES Foundation" style={{ height: 40, marginRight: '0.5rem' }} />
+            </Navbar.Brand>
 
-          {/* Desktop Menu */}
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
-            {['Home', 'About Us', 'Rules', 'FAQS', 'Objective', 'Gallery'].map((text) => ( // Added 'Gallery'
-              <Button
-                key={text}
-                component={Link} // Use Link component for navigation
-                to={routes[text]} // Set the 'to' attribute based on the routes map
-                sx={{
-                  color: '#333',
-                  fontWeight: 'bold',
-                  textTransform: 'none',
-                  '&:hover': { textDecoration: 'underline' }
-                }}
-              >
-                {text}
-              </Button>
-            ))}
-            <Button onClick={handleMenuClick} sx={{ color: '#333', fontWeight: 'bold' }}>
-           Services
-            </Button>
-            <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleCloseMenu}>
-  <MenuItem component={Link} to="/services/coding" onClick={handleCloseMenu}>
-    Coding Classes
-  </MenuItem>
-  <MenuItem component={Link} to="/services/english" onClick={handleCloseMenu}>
-    English Classes
-  </MenuItem>
-  <MenuItem component={Link} to="/services/environment" onClick={handleCloseMenu}>
-    Helping Environment
-  </MenuItem>
-</Menu>
-
-          </Box>
-
-          {/* Register and Login Buttons */}
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
-            <Button
-              variant="outlined"
-              color="primary"
-              sx={{ marginRight: '8px' }}
-              onClick={() => navigate('/login')}
+            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+            <Navbar.Offcanvas
+              id={`offcanvasNavbar-expand-${expand}`}
+              aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
+              placement="end"
             >
-              Login
-            </Button>
-            <Button variant="contained" color="primary" onClick={() => navigate('/register')}>
-              Register
-            </Button>
-          </Box>
+              <Offcanvas.Header closeButton>
+                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
+                  BEES Foundation
+                </Offcanvas.Title>
+              </Offcanvas.Header>
 
-          {/* Mobile Menu (Hamburger) */}
-          <IconButton onClick={toggleDrawer(true)} sx={{ display: { xs: 'flex', md: 'none' }, color: '#333' }}>
-            <MenuIcon />
-          </IconButton>
-        </Toolbar>
+              <Offcanvas.Body>
+                <Nav className="justify-content-center flex-grow-1 pe-3" style={{ gap: '0.5rem' }}>
+                  {Object.keys(routes).map((key) => (
+                    <Nav.Link
+                      key={key}
+                      href={routes[key]}
+                      style={{
+                        fontWeight: 'bold',
+                        color: '#333',
+                        padding: '0.5rem 1rem',
+                        borderRadius: '5px',
+                      }}
+                    >
+                      {key}
+                    </Nav.Link>
+                  ))}
 
-        {/* Drawer for Mobile View */}
-        <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
-          <Box
-            role="presentation"
-            sx={{ width: 250, display: 'flex', flexDirection: 'column', height: '100%' }}
-            onClick={toggleDrawer(false)}
-          >
-            {/* Close Icon */}
-            <IconButton sx={{ justifyContent: 'flex-end', padding: 2 }}>
-              <CloseIcon />
-            </IconButton>
+                  {/* Services Dropdown */}
+                  <NavDropdown title={<span style={{ fontWeight: 'bold' }}>Services</span>} id={`offcanvasNavbarDropdown-expand-${expand}`}>
+                    <NavDropdown.Item onClick={() => navigate('/services/coding')}>Coding Classes</NavDropdown.Item>
+                    <NavDropdown.Item onClick={() => navigate('/services/english')}>English Classes</NavDropdown.Item>
+                    <NavDropdown.Item onClick={() => navigate('/services/environment')}>Helping Environment</NavDropdown.Item>
+                  </NavDropdown>
+                </Nav>
 
-            {/* Drawer List */}
-            <List sx={{ textAlign: 'center' }}>
-              {['Home', 'About Us', 'Rules', 'Contact', 'Objective', 'Gallery'].map((text) => ( // Added 'Gallery'
-                <ListItem button key={text} component={Link} to={routes[text]}>
-                  {text}
-                </ListItem>
-              ))}
-
-              {/* Services Menu in Drawer */}
-              <ListItem button onClick={handleMenuClick}>
-                Services
-              </ListItem>
-              <Divider />
-
-              {/* Login and Register Buttons */}
-              <ListItem sx={{ paddingTop: 2 }}>
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  onClick={() => navigate('/login')}
-                  sx={{ width: '100%' }}
-                >
-                  Login
-                </Button>
-              </ListItem>
-              <ListItem sx={{ paddingBottom: 2 }}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={() => navigate('/register')}
-                  sx={{ width: '100%' }}
-                >
-                  Register
-                </Button>
-              </ListItem>
-            </List>
-          </Box>
-        </Drawer>
-      </Container>
-    </AppBar>
+                {/* Login/Register Buttons */}
+                <div className="d-flex align-items-center" style={{ gap: '0.5rem' }}>
+                  <Button
+                    variant="outline-primary"
+                    className="me-2"
+                    style={{
+                      fontSize: '16px',
+                      fontFamily: 'Arial, sans-serif',
+                      fontWeight: 'bold',
+                      color: '#f57223',
+                      borderColor: '#f57223',
+                      borderRadius: '5px',
+                      padding: '0.5rem 1.2rem',
+                    }}
+                    onClick={() => navigate('/login')}
+                    onMouseOver={(e) => (e.target.style.backgroundColor = '#fff')}
+                    onMouseOut={(e) => (e.target.style.backgroundColor = 'transparent')}
+                  >
+                    Login
+                  </Button>
+                  <Button
+                    variant="primary"
+                    style={{
+                      backgroundColor: '#f57223',
+                      fontSize: '16px',
+                      fontWeight: 'bold',
+                      fontFamily: 'Arial, sans-serif',
+                      padding: '0.5rem 1.5rem',
+                      borderColor: '#f57223',
+                      borderRadius: '5px',
+                    }}
+                    onClick={() => navigate('/register')}
+                  >
+                    Register
+                  </Button>
+                </div>
+              </Offcanvas.Body>
+            </Navbar.Offcanvas>
+          </Container>
+        </Navbar>
+      ))}
+    </>
   );
-};
+}
 
-export default Header;
+export default OffcanvasExample;

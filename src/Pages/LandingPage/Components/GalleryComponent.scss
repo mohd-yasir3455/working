@@ -1,0 +1,67 @@
+/* Styles for the gallery container */
+.gallery-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Masonry grid styles */
+  .masonry-gallery-demo {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -20px;  /* Adjust space between items */
+    margin-right: -20px;
+  }
+  
+  /* Gallery item styles */
+  .gallery-item {
+    width: calc(33.333% - 20px); /* Each item takes up one third of the container width */
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+  
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px; /* Optional: add rounded corners to images */
+      transition: transform 0.3s ease;
+    }
+  
+    &:hover img {
+      transform: scale(1.05); /* Slight zoom effect on hover */
+    }
+  }
+  
+  /* For responsive layouts */
+  @media (max-width: 1024px) {
+    .gallery-item {
+      width: calc(50% - 20px); /* 2 items per row on medium screens */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .gallery-item {
+      width: 100%; /* 1 item per row on small screens */
+    }
+  }
+  
+  /* LightGallery overlay styling */
+  .lg-outer {
+    position: relative;
+  }
+  
+  .lg-toolbar {
+    background-color: rgba(0, 0, 0, 0.7); /* Dark background for toolbar */
+    border-radius: 8px;
+  }
+  
+  /* Styling the lightbox captions */
+  .lg-sub-html {
+    font-size: 14px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 8px;
+  }
+  

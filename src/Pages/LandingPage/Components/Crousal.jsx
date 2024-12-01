@@ -1,150 +1,107 @@
-import React from 'react';
-import Slider from 'react-slick';
-import { Box, Typography, IconButton } from '@mui/material';
-import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
-import image1 from '../Components/images/crousal1.jpg'
-import image2  from '../Components/images/crousal2.jpg'
+import { useState } from 'react';
+import Carousel from 'react-bootstrap/Carousel';
+import image1 from '../Components/images/crousal1.jpg'; // First slide image
+import image2 from '../Components/images/t6.jpg'; // Second slide image
+import image3 from '../Components/images/t1.jpg'; // Third slide image
+import image4 from '../Components/images/t2.jpg'; // Third slide image
+import image5 from '../Components/images/t5.jpg'; // Third slide image
+import image6 from '../Components/images/t4.jpg'; // Third slide image
 
-// Custom arrow components for better styling
-const CustomPrevArrow = ({ onClick }) => (
-  <IconButton
-    sx={{
-      position: 'absolute',
-      top: '50%',
-      left: '10px',
-      transform: 'translateY(-50%)',
-      zIndex: 1,
-      color: 'white',
-      backgroundColor: 'rgba(0,0,0,0.5)',
-      '&:hover': {
-        backgroundColor: 'rgba(0,0,0,0.8)',
-      },
-    }}
-    onClick={onClick}
-  >
-    <ArrowBackIos />
-  </IconButton>
-);
 
-const CustomNextArrow = ({ onClick }) => (
-  <IconButton
-    sx={{
-      position: 'absolute',
-      top: '50%',
-      right: '10px',
-      transform: 'translateY(-50%)',
-      zIndex: 1,
-      color: 'white',
-      backgroundColor: 'rgba(0,0,0,0.5)',
-      '&:hover': {
-        backgroundColor: 'rgba(0,0,0,0.8)',
-      },
-    }}
-    onClick={onClick}
-  >
-    <ArrowForwardIos />
-  </IconButton>
-);
+function Crousal() {
+  const [index, setIndex] = useState(0);
 
-const Crousal = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    nextArrow: <CustomNextArrow />,
-    prevArrow: <CustomPrevArrow />,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          arrows: true,
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          arrows: false,
-          dots: true,
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+  const handleSelect = (selectedIndex) => {
+    setIndex(selectedIndex);
   };
 
-  const slides = [
-    {
-      src: image1,
-      caption: 'welcome to BEES Foundation',
-    },
-    {
-      src: image2,
-      caption: 'help and reform society ',
-    },
-    {
-      src: 'https://via.placeholder.com/1200x600',
-      caption: 'Slide 3 Caption',
-    },
-  ];
-
   return (
-    <Box sx={{
-      width: '100%',
-      position: 'relative',
-      overflow: 'hidden', // Hide overflow
-      '& .slick-slide img': {
-        width: '100%',
-        height: 'auto',
-        objectFit: 'cover',
-      },
-      '& .slick-dots': {
-        bottom: '10px', // Position dots closer to the bottom
-      },
-    }}>
-      <Slider {...settings}>
-        {slides.map((slide, index) => (
-          <Box key={index} sx={{
-            position: 'relative',
-            height: { xs: '200px', sm: '300px', md: '400px', lg: '500px' }, // Responsive heights
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            overflow: 'hidden', // Ensure content fits within the slide
-          }}>
-            <img
-              src={slide.src}
-              alt={`Slide ${index + 1}`}
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-            />
-            <Typography
-              variant="h6"
-              sx={{
-                position: 'absolute',
-                bottom: '20px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                color: 'white',
-                backgroundColor: 'rgba(0,0,0,0.5)',
-                padding: '10px',
-                borderRadius: '4px',
-                textAlign: 'center',
-                maxWidth: '90%', // Ensure the text doesn't exceed the width of the image
-                boxSizing: 'border-box',
-              }}
-            >
-              {slide.caption}
-            </Typography>
-          </Box>
-        ))}
-      </Slider>
-    </Box>
+    <Carousel activeIndex={index} onSelect={handleSelect}>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={image1}
+          alt="First slide"
+          style={{ objectFit: 'cover', height: '500px' }} // Adjust height as needed
+        />
+        <Carousel.Caption>
+          {/* <h3>First slide label</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={image2}
+          alt="Second slide"
+          style={{ objectFit: 'cover', height: '400px' }} // Adjust height as needed
+        />
+        <Carousel.Caption>
+          {/* <h3>Second slide label</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={image3}
+          alt="Third slide"
+          style={{ objectFit: 'cover', height: '400px' }} // Adjust height as needed
+        />
+        <Carousel.Caption>
+          {/* <h3>Third slide label</h3>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p> */}
+        </Carousel.Caption>
+      </Carousel.Item>
+
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={image6}
+          alt="Third slide"
+          style={{ objectFit: 'cover', height: '400px' }} // Adjust height as needed
+        />
+        <Carousel.Caption>
+          {/* <h3>Third slide label</h3>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p> */}
+        </Carousel.Caption>
+      </Carousel.Item>
+
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={image5}
+          alt="Third slide"
+          style={{ objectFit: 'cover', height: '400px' }} // Adjust height as needed
+        />
+        <Carousel.Caption>
+          {/* <h3>fourth slide label</h3>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p> */}
+        </Carousel.Caption>
+      </Carousel.Item>
+
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={image4}
+          alt="Third slide"
+          style={{ objectFit: 'cover', height: '400px' }} // Adjust height as needed
+        />
+        <Carousel.Caption>
+          {/* <h3>fifth slide label</h3>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p> */}
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
   );
-};
+}
 
 export default Crousal;
