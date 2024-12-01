@@ -1,122 +1,122 @@
-import React, { useState } from 'react';
-import { Box,  Dialog, Typography, IconButton } from '@mui/material';
-import Grid from '@mui/material/Grid2'
-import CloseIcon from '@mui/icons-material/Close';
-import image1 from '../Components/images/anas.jpg';
-import image2 from '../Components/images/anas1.jpg';
-import image3 from '../Components/images/anas.jpg';
-import image4 from '../Components/images/anas.jpg';
-import image5 from '../Components/images/anas.jpg';
-import image6 from '../Components/images/anas.jpg';
+import React from 'react';
+import { Container, Grid, Card, CardMedia, CardContent, Typography } from '@mui/material';
+import 'tailwindcss/tailwind.css'; // Import Tailwind CSS
+import img1 from "../Components/images/t1.jpg";
+import img2 from "../Components/images/t2.jpg";
+import img3 from "../Components/images/t3.jpg";
+import img4 from "../Components/images/t4.jpg";
+import img5 from "../Components/images/t5.jpg";
+import img6 from "../Components/images/t7.jpg";
+import bgImage from "../Components/images/t1.jpg"; // Background image for parallax
 
-// Array of images and captions
-const images = [
-  { src: image1, caption: 'Nature Beauty' },
-  { src: image2, caption: 'City Life' },
-  { src: image3, caption: 'Abstract Art' },
-  { src: image4, caption: 'Mountain Adventures' },
-  { src: image5, caption: 'Calm Waters' },
-  { src: image6, caption: 'Wilderness' },
-];
-
-const CreativeGallery = () => {
-  const [open, setOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
-
-  const handleClickOpen = (image) => {
-    setSelectedImage(image);
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-    setSelectedImage(null);
-  };
-
+const Gallery = () => {
   return (
-    <Box sx={{ padding: 4, maxWidth: '1200px', margin: 'auto' }}>
-      <Grid container spacing={2}>
-        {images.map((image, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
-            <Box
-              sx={{
-                position: 'relative',
-                overflow: 'hidden',
-                borderRadius: '10px',
-                cursor: 'pointer',
-                boxShadow: 3,
-                '&:hover .overlay': {
-                  opacity: 1,
-                },
-                '&:hover img': {
-                  transform: 'scale(1.1)',
-                },
-              }}
-              onClick={() => handleClickOpen(image)}
-            >
-              <Box
-                component="img"
-                src={image.src}
-                alt={`Gallery Image ${index + 1}`}
-                sx={{
-                  width: '100%',
-                  height: '300px',
-                  objectFit: 'cover',
-                  transition: 'transform 0.5s ease',
-                }}
-              />
-              {/* Overlay on Hover */}
-              <Box
-                className="overlay"
-                sx={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%',
-                  backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                  color: 'white',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  opacity: 0,
-                  transition: 'opacity 0.3s ease',
-                }}
-              >
-                <Typography variant="h6" sx={{ textAlign: 'center' }}>
-                  {image.caption}
-                </Typography>
-              </Box>
-            </Box>
-          </Grid>
-        ))}
-      </Grid>
-
-      {/* Lightbox Dialog */}
-      <Dialog open={open} onClose={handleClose} maxWidth="lg">
-        <IconButton
-          onClick={handleClose}
-          sx={{
-            position: 'absolute',
-            top: '10px',
-            right: '10px',
-            color: 'white',
-          }}
+    <div
+      className="bg-cover bg-center"
+      style={{
+        backgroundAttachment: 'fixed',  // Parallax effect
+        height: 'auto',
+      }}
+    >
+      <Container maxWidth="lg" className="my-12 relative z-10">
+        <Typography 
+          variant="h4" 
+          component="h1" 
+          className="font-bold text-4xl text-center text-orange-600 mb-8"
         >
-          <CloseIcon />
-        </IconButton>
-        <Box
-          component="img"
-          src={selectedImage?.src}
-          alt="Selected"
-          sx={{ width: '100%', height: 'auto' }}
-        />
-        <Typography variant="h6" sx={{ textAlign: 'center', padding: 2 }}>
-          {selectedImage?.caption}
+          BEES Foundation Gallery
         </Typography>
-      </Dialog>
-    </Box>
+
+        <Grid container spacing={4}>
+          <Grid item xs={12} sm={6} md={4}>
+            <Card className="shadow-lg rounded-lg">
+              <CardMedia 
+                component="img" 
+                image={img1} 
+                alt="Gallery Image 1" 
+                className="w-full h-64 object-cover rounded-t-lg"
+              />
+              <CardContent className="p-4">
+                <Typography variant="h6" className="font-semibold text-lg text-gray-800">Image 1</Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={4}>
+            <Card className="shadow-lg rounded-lg">
+              <CardMedia 
+                component="img" 
+                image={img2} 
+                alt="Gallery Image 2" 
+                className="w-full h-64 object-cover rounded-t-lg"
+              />
+              <CardContent className="p-4">
+                <Typography variant="h6" className="font-semibold text-lg text-gray-800">Image 2</Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={4}>
+            <Card className="shadow-lg rounded-lg">
+              <CardMedia 
+                component="img" 
+                image={img3} 
+                alt="Gallery Image 3" 
+                className="w-full h-64 object-cover rounded-t-lg"
+              />
+              <CardContent className="p-4">
+                <Typography variant="h6" className="font-semibold text-lg text-gray-800">Image 3</Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={4}>
+            <Card className="shadow-lg rounded-lg">
+              <CardMedia 
+                component="img" 
+                image={img4} 
+                alt="Gallery Image 4" 
+                className="w-full h-64 object-cover rounded-t-lg"
+              />
+              <CardContent className="p-4">
+                <Typography variant="h6" className="font-semibold text-lg text-gray-800">Image 4</Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={4}>
+            <Card className="shadow-lg rounded-lg">
+              <CardMedia 
+                component="img" 
+                image={img5} 
+                alt="Gallery Image 5" 
+                className="w-full h-64 object-cover rounded-t-lg"
+              />
+              <CardContent className="p-4">
+                <Typography variant="h6" className="font-semibold text-lg text-gray-800">Image 5</Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={4}>
+            <Card className="shadow-lg rounded-lg">
+              <CardMedia 
+                component="img" 
+                image={img6} 
+                alt="Gallery Image 6" 
+                className="w-full h-64 object-cover rounded-t-lg"
+              />
+              <CardContent className="p-4">
+                <Typography variant="h6" className="font-semibold text-lg text-gray-800">Image 6</Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+      </Container>
+    </div>
   );
 };
 
-export default CreativeGallery;
+export default Gallery;
+
+

@@ -18,6 +18,7 @@ import english from './Pages/services/english.jsx'
 import env from './Pages/services/environment.jsx'
 import { Margin } from '@mui/icons-material';
 
+
 const App = () => {
   return (
     
@@ -29,6 +30,9 @@ const App = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/faq" element={<FAQSection />} />
+        <Route path="/phone" element={<PhoneIcon />} />
+   
+       
         <Route path="/login" element={<LoginPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/rules" element={<RulesPage />} />
