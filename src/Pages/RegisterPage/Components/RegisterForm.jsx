@@ -114,7 +114,7 @@ const RegistrationForm = () => {
   };
 
   const handleSubmit = async (e) => {
-
+    e.preventDefault();
     const tempErrors = validate();
     if (Object.keys(tempErrors).length === 0) {
       try {
