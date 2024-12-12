@@ -12,6 +12,7 @@ import {
   Checkbox,
   FormControlLabel,
   FormHelperText,
+  CircularProgress,
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link } from "react-router-dom";
@@ -83,11 +84,11 @@ const RegistrationForm = () => {
     mobileNumber: "",
     homeMobileNumber: "",
     declaration: false,
-    benefits: false,
     rulesRead: false,
   });
 
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -124,7 +125,7 @@ const RegistrationForm = () => {
     }
   
     // Start loading
-    setIsSubmitting(true); // Assume setIsSubmitting controls a spinner or button state
+    setIsSubmitting(true);
   
     try {
       // Use environment variable for API base URL
@@ -144,7 +145,32 @@ const RegistrationForm = () => {
         console.log('Server Response:', data);
   
         // Clear the form
-        setFormData({});
+        setFormData({
+          password: "",
+          confirmPassword: "",
+          name: "",
+          dob: "",
+          email: "",
+          gender: "",
+          occupation: "",
+          aadharNumber: "",
+          fatherName: "",
+          address: "",
+          district: "",
+          state: "",
+          nominee1: "",
+          relationWithNominee1: "",
+          nominee1Mobile: "",
+          nominee2: "",
+          relationWithNominee2: "",
+          nominee2Mobile: "",
+          disease: "",
+          diseaseDescription: "",
+          mobileNumber: "",
+          homeMobileNumber: "",
+          declaration: false,
+          rulesRead: false,
+        });
       } else {
         const errorData = await response.json(); // Handle error response from server
         console.error('Server Error:', errorData);
@@ -437,23 +463,17 @@ const RegistrationForm = () => {
                 <Grid item xs={12} md={6}>
                   <Button
                     fullWidth
-                    type="submit"
                     variant="contained"
                     color="primary"
-                    size="large"
+                    type="submit"
+                    disabled={isSubmitting}
                   >
-                    Submit
+                    {isSubmitting ? <CircularProgress size={24} /> : 'Submit'}
                   </Button>
                 </Grid>
                 <Grid item xs={12} md={6}>
-                  <Button
-                    component={Link}
-                    to="/login"
-                    fullWidth
-                    variant="outlined"
-                    size="large"
-                  >
-                    Go to Login
+                  <Button fullWidth variant="outlined" component={Link} to="/">
+                    Cancel
                   </Button>
                 </Grid>
               </Grid>
