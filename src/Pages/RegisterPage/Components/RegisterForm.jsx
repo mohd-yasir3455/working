@@ -115,31 +115,50 @@ const RegistrationForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
+    // Validate the form before submission
     const tempErrors = validate();
-    if (Object.keys(tempErrors).length === 0) {
-      try {
-        const response = await fetch('http://localhost:5000/api/form', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
-        });
-
-        if (response.ok) {
-          alert('Registration successful');
-          // Optionally, redirect to another page or clear the form
-        } else {
-          alert('Registration failed');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        alert('Registration failed');
-      }
-    } else {
+    if (Object.keys(tempErrors).length > 0) {
       setErrors(tempErrors);
+      return;
+    }
+  
+    // Start loading
+    setIsSubmitting(true); // Assume setIsSubmitting controls a spinner or button state
+  
+    try {
+      // Use environment variable for API base URL
+      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/form';
+  
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      if (response.ok) {
+        const data = await response.json(); // If the response contains JSON data
+        alert('Registration successful');
+        console.log('Server Response:', data);
+  
+        // Clear the form
+        setFormData({});
+      } else {
+        const errorData = await response.json(); // Handle error response from server
+        console.error('Server Error:', errorData);
+        alert(`Registration failed: ${errorData.message || 'Unknown error'}`);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Registration failed: Unable to connect to the server.');
+    } finally {
+      // Stop loading
+      setIsSubmitting(false);
     }
   };
+  
 
   return (
     <ThemeProvider theme={theme}>
