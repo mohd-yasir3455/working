@@ -34,6 +34,7 @@ const statesInIndia = [
   "Assam",
   "Bihar",
   "Chhattisgarh",
+  "Delhi",
   "Goa",
   "Gujarat",
   "Haryana",
