@@ -1,4 +1,6 @@
 import React from 'react';
+import { SpeedInsights } from "@vercel/speed-insights/react"
+import { Analytics } from "@vercel/analytics/react"
 import {Box} from '@mui/material'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LandingPage from './Pages/LandingPage/LandingPage';
@@ -25,6 +27,8 @@ const App = () => {
     <Router>
     <Header/>
     <PhoneIcon/>
+    <Analytics/>
+    <SpeedInsights/>
     <WhatsAppFloatingButton/>
       <Routes>
         <Route path="/" element={<LandingPage />} />
