@@ -27,6 +27,8 @@ const App = () => {
     <Router>
     <Header/>
     <PhoneIcon/>
+    <Analytics/>
+    <SpeedInsights/>
     <WhatsAppFloatingButton/>
       <Routes>
         <Route path="/" element={<LandingPage />} />
