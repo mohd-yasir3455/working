@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa";
 import { FiMail, FiPhone, FiMapPin } from "react-icons/fi";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
-import icon from "../Components/images/logo.jpg";
+import icon from "../Components/images/cutted_logo.png";
 
 const Footer = () => {
   return (
