@@ -5,12 +5,12 @@ const Stat = () => {
   const theme = useTheme(); // Access the theme colors
 
   return (
-    <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+    <div className="mx-auto max-w-screen-xl px-4 py-4 sm:px-6 sm:py-6 lg:px-8">
   <div className="mx-auto max-w-3xl text-center">
     <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">BEES Foundation</h2>
 
-    <p className="mt-4 text-gray-500 sm:text-xl">
-    reforming and promoting education
+    <p className=" text-gray-500 sm:text-xl">
+    Reforming and Promoting Education
 
     </p>
   </div>

@@ -10,7 +10,7 @@ import FounderCard from './Components/FounderCard';
 import WhatsAppFloatingButton from './Components/WhatsAppFloatingButton';
 import PhoneIcon from './Components/PhoneIcon'
 import VideoComponent from './Components/VideoComponent';
-
+import Other from './Components/other'
 import CardDeck from './Components/CardDeck';
 import FAQSection from './Components/FAQSection';
 import Stat from './Components/Stat';
@@ -23,6 +23,7 @@ const LandingPage = () => {
    
       <Crousal/>
       <FounderCard/>
+      <Other/>
       <HeroSection />
       <AboutSection />
       <VideoComponent/>

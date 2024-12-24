@@ -22,7 +22,7 @@ function Crousal() {
           className="d-block w-100"
           src={image1}
           alt="First slide"
-          style={{ objectFit: 'cover', height: '500px' }} // Adjust height as needed
+          style={{ objectFit: 'cover', height: '500px' , objectPosition :'top'}} // Adjust height as needed
         />
         <Carousel.Caption>
           {/* <h3>First slide label</h3>
@@ -34,7 +34,7 @@ function Crousal() {
           className="d-block w-100"
           src={image2}
           alt="Second slide"
-          style={{ objectFit: 'cover', height: '400px' }} // Adjust height as needed
+          style={{ objectFit: 'cover', height: '400px', objectPosition :'top' }} // Adjust height as needed
         />
         <Carousel.Caption>
           {/* <h3>Second slide label</h3>
@@ -46,7 +46,7 @@ function Crousal() {
           className="d-block w-100"
           src={image3}
           alt="Third slide"
-          style={{ objectFit: 'cover', height: '400px' }} // Adjust height as needed
+          style={{ objectFit: 'cover', height: '400px', objectPosition :'top' }} // Adjust height as needed
         />
         <Carousel.Caption>
           {/* <h3>Third slide label</h3>
@@ -61,7 +61,7 @@ function Crousal() {
           className="d-block w-100"
           src={image6}
           alt="Third slide"
-          style={{ objectFit: 'cover', height: '400px' }} // Adjust height as needed
+          style={{ objectFit: 'cover', height: '400px', objectPosition :'top' }} // Adjust height as needed
         />
         <Carousel.Caption>
           {/* <h3>Third slide label</h3>
@@ -76,7 +76,7 @@ function Crousal() {
           className="d-block w-100"
           src={image5}
           alt="Third slide"
-          style={{ objectFit: 'cover', height: '400px' }} // Adjust height as needed
+          style={{ objectFit: 'cover', height: '400px', objectPosition :'top' }} // Adjust height as needed
         />
         <Carousel.Caption>
           {/* <h3>fourth slide label</h3>

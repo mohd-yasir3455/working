@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
 // MongoDB URI
-const mongoURI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/econest';
+const mongoURI = "mongodb+srv://mcayasir1501:HmmJbSXCVAPtDwbm@beesfoundation.jdhfn.mongodb.net/?retryWrites=true&w=majority&appName=beesfoundation";
+
 
 // Connect to MongoDB
 const connectToMongoDB = async () => {

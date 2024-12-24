@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Container, Nav, Navbar, NavDropdown, Offcanvas } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import logo1 from './images/logo1.jpg';
+import logo from './images/cutted_logo.png';
 
 function OffcanvasExample() {
   const navigate = useNavigate();
@@ -19,11 +20,25 @@ function OffcanvasExample() {
       {['md'].map((expand) => (
         <Navbar key={expand} expand={expand} bg="light" className="mb-3" sticky="top">
           <Container fluid>
-            {/* Logo */}
-            <Navbar.Brand href="#" onClick={() => navigate('/')}>
-              <img src={logo1} alt="BEES Foundation" style={{ height: 40, marginRight: '0.5rem' }} />
-            </Navbar.Brand>
+            {/* Logos */}
+            <div className="d-flex align-items-center">
+              <Navbar.Brand href="#" onClick={() => navigate('/')} className="d-flex align-items-center">
+                <img
+                  src={logo}
+                  alt="BEES Foundation"
+                  style={{ height: '40px'}} // Adjusted margin to reduce gap
+                />
+              </Navbar.Brand>
+              <Navbar.Brand href="#" onClick={() => navigate('/')} className="d-flex align-items-center">
+                <img
+                  src={logo1}
+                  alt="BEES Foundation"
+                  style={{ height: '40px', marginRight: '0.2rem'  }}
+                />
+              </Navbar.Brand>
+            </div>
 
+            {/* Toggle and Offcanvas */}
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
@@ -37,6 +52,7 @@ function OffcanvasExample() {
               </Offcanvas.Header>
 
               <Offcanvas.Body>
+                {/* Navigation Links */}
                 <Nav className="justify-content-center flex-grow-1 pe-3" style={{ gap: '0.5rem' }}>
                   {Object.keys(routes).map((key) => (
                     <Nav.Link
@@ -54,10 +70,19 @@ function OffcanvasExample() {
                   ))}
 
                   {/* Services Dropdown */}
-                  <NavDropdown title={<span style={{ fontWeight: 'bold' }}>Services</span>} id={`offcanvasNavbarDropdown-expand-${expand}`}>
-                    <NavDropdown.Item onClick={() => navigate('/services/coding')}>Coding Classes</NavDropdown.Item>
-                    <NavDropdown.Item onClick={() => navigate('/services/english')}>English Classes</NavDropdown.Item>
-                    <NavDropdown.Item onClick={() => navigate('/services/environment')}>Helping Environment</NavDropdown.Item>
+                  <NavDropdown
+                    title={<span style={{ fontWeight: 'bold' }}>Services</span>}
+                    id={`offcanvasNavbarDropdown-expand-${expand}`}
+                  >
+                    <NavDropdown.Item onClick={() => navigate('/services/coding')}>
+                      Coding Classes
+                    </NavDropdown.Item>
+                    <NavDropdown.Item onClick={() => navigate('/services/english')}>
+                      English Classes
+                    </NavDropdown.Item>
+                    <NavDropdown.Item onClick={() => navigate('/services/environment')}>
+                      Helping Environment
+                    </NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
 

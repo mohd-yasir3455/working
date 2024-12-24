@@ -29,19 +29,25 @@ const theme = createTheme({
 });
 
 const statesInIndia = [
+  "Andaman and Nicobar Islands",
   "Andhra Pradesh",
   "Arunachal Pradesh",
   "Assam",
   "Bihar",
+  "Chandigarh",
   "Chhattisgarh",
+  "Daman and Diu",
   "Delhi",
   "Goa",
   "Gujarat",
   "Haryana",
   "Himachal Pradesh",
+  "Jammu and Kashmir",
   "Jharkhand",
   "Karnataka",
   "Kerala",
+  "Ladakh",
+  "Lakshadweep",
   "Madhya Pradesh",
   "Maharashtra",
   "Manipur",
@@ -49,6 +55,7 @@ const statesInIndia = [
   "Mizoram",
   "Nagaland",
   "Odisha",
+  "Puducherry",
   "Punjab",
   "Rajasthan",
   "Sikkim",
@@ -74,6 +81,7 @@ const RegistrationForm = () => {
     address: "",
     district: "",
     state: "",
+    // takingBenefit: false, // New fieldi
     nominee1: "",
     relationWithNominee1: "",
     nominee1Mobile: "",
@@ -90,6 +98,9 @@ const RegistrationForm = () => {
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData1, setFormData1] = useState({
+    availingBenefits: false, // Boolean flag
+  });
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -108,43 +119,53 @@ const RegistrationForm = () => {
     if (!formData.email) tempErrors.email = "Email is required.";
     if (!formData.gender) tempErrors.gender = "Please select your gender.";
     if (!formData.state) tempErrors.state = "State selection is required.";
-    if (!formData.mobileNumber) tempErrors.mobileNumber = "Mobile number is required.";
-    if (!formData.aadharNumber.match(/^\d{12}$/)) tempErrors.aadharNumber = "Aadhar number must be a 12-digit number.";
-    if (!formData.declaration) tempErrors.declaration = "You must declare that the information is correct.";
-    if (!formData.rulesRead) tempErrors.rulesRead = "You must confirm that you have read the rules.";
+    if (formData.availingBenefits === null) {
+      tempErrors.availingBenefits = "Please select an option.";
+    }
+
+    if (!formData.mobileNumber)
+      tempErrors.mobileNumber = "Mobile number is required.";
+    if (!formData.aadharNumber.match(/^\d{12}$/))
+      tempErrors.aadharNumber = "Aadhar number must be a 12-digit number.";
+    if (!formData.declaration)
+      tempErrors.declaration =
+        "You must declare that the information is correct.";
+    if (!formData.rulesRead)
+      tempErrors.rulesRead = "You must confirm that you have read the rules.";
     return tempErrors;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     // Validate the form before submission
     const tempErrors = validate();
     if (Object.keys(tempErrors).length > 0) {
       setErrors(tempErrors);
       return;
     }
-  
+
     // Start loading
     setIsSubmitting(true);
-  
+
     try {
       // Use environment variable for API base URL
-      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/form';
-  
+      const apiUrl =
+        process.env.REACT_APP_API_URL || "http://localhost:5000/api/form";
+
       const response = await fetch(apiUrl, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
-  
+
       if (response.ok) {
         const data = await response.json(); // If the response contains JSON data
-        alert('Registration successful');
-        console.log('Server Response:', data);
-  
+        alert("Registration successful");
+        console.log("Server Response:", data);
+
         // Clear the form
         setFormData({
           password: "",
@@ -174,18 +195,17 @@ const RegistrationForm = () => {
         });
       } else {
         const errorData = await response.json(); // Handle error response from server
-        console.error('Server Error:', errorData);
-        alert(`Registration failed: ${errorData.message || 'Unknown error'}`);
+        console.error("Server Error:", errorData);
+        alert(`Registration failed: ${errorData.message || "Unknown error"}`);
       }
     } catch (error) {
-      console.error('Error:', error);
-      alert('Registration failed: Unable to connect to the server.');
+      console.error("Error:", error);
+      alert("Registration failed: Unable to connect to the server.");
     } finally {
       // Stop loading
       setIsSubmitting(false);
     }
   };
-  
 
   return (
     <ThemeProvider theme={theme}>
@@ -360,35 +380,92 @@ const RegistrationForm = () => {
                     ))}
                   </TextField>
                 </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    select
+                    label="Do you want to avail the benefits offered by the foundation"
+                    name="availingBenefits"
+                    value={formData.availingBenefits}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        availingBenefits: e.target.value === "true", // Convert string to boolean
+                      })
+                    }
+                    error={!!errors.availingBenefits}
+                    helperText={
+                      errors.availingBenefits || "Please select one option."
+                    }
+                  >
+                    <MenuItem value="true">Avail the benefits</MenuItem>
+                    <MenuItem value="false">
+                    Donate money for the education of underprivileged children
+                    </MenuItem>
+                  </TextField>
+                </Grid>
 
-                {/* Nominee Details */}
-                <Grid item xs={12} md={6}>
-                  <TextField
-                    fullWidth
-                    label="Nominee 1 Name"
-                    name="nominee1"
-                    value={formData.nominee1}
-                    onChange={handleChange}
-                  />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <TextField
-                    fullWidth
-                    label="Relation with Nominee 1"
-                    name="relationWithNominee1"
-                    value={formData.relationWithNominee1}
-                    onChange={handleChange}
-                  />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <TextField
-                    fullWidth
-                    label="Nominee 1 Mobile"
-                    name="nominee1Mobile"
-                    value={formData.nominee1Mobile}
-                    onChange={handleChange}
-                  />
-                </Grid>
+                {formData.availingBenefits && (
+                  <>
+                    {/* Nominee 1 Details */}
+                    <Grid item xs={12} md={6}>
+                      <TextField
+                        fullWidth
+                        label="Nominee 1 Name"
+                        name="nominee1"
+                        value={formData.nominee1}
+                        onChange={handleChange}
+                      />
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                      <TextField
+                        fullWidth
+                        label="Relation with Nominee 1"
+                        name="relationWithNominee1"
+                        value={formData.relationWithNominee1}
+                        onChange={handleChange}
+                      />
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                      <TextField
+                        fullWidth
+                        label="Nominee 1 Mobile"
+                        name="nominee1Mobile"
+                        value={formData.nominee1Mobile}
+                        onChange={handleChange}
+                      />
+                    </Grid>
+
+                    {/* Nominee 2 Details */}
+                    <Grid item xs={12} md={6}>
+                      <TextField
+                        fullWidth
+                        label="Nominee 2 Name"
+                        name="nominee2"
+                        value={formData.nominee2}
+                        onChange={handleChange}
+                      />
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                      <TextField
+                        fullWidth
+                        label="Relation with Nominee 2"
+                        name="relationWithNominee2"
+                        value={formData.relationWithNominee2}
+                        onChange={handleChange}
+                      />
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                      <TextField
+                        fullWidth
+                        label="Nominee 2 Mobile"
+                        name="nominee2Mobile"
+                        value={formData.nominee2Mobile}
+                        onChange={handleChange}
+                      />
+                    </Grid>
+                  </>
+                )}
 
                 {/* Disease Information */}
                 <Grid item xs={12}>
@@ -444,7 +521,9 @@ const RegistrationForm = () => {
                     }
                     label="I declare that all information provided is correct."
                   />
-                  {errors.declaration && <FormHelperText error>{errors.declaration}</FormHelperText>}
+                  {errors.declaration && (
+                    <FormHelperText error>{errors.declaration}</FormHelperText>
+                  )}
                 </Grid>
                 <Grid item xs={12}>
                   <FormControlLabel
@@ -457,7 +536,9 @@ const RegistrationForm = () => {
                     }
                     label="I have read and understood the rules."
                   />
-                  {errors.rulesRead && <FormHelperText error>{errors.rulesRead}</FormHelperText>}
+                  {errors.rulesRead && (
+                    <FormHelperText error>{errors.rulesRead}</FormHelperText>
+                  )}
                 </Grid>
 
                 {/* Submit and Redirect */}
@@ -469,7 +550,7 @@ const RegistrationForm = () => {
                     type="submit"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? <CircularProgress size={24} /> : 'Submit'}
+                    {isSubmitting ? <CircularProgress size={24} /> : "Submit"}
                   </Button>
                 </Grid>
                 <Grid item xs={12} md={6}>

@@ -12,17 +12,17 @@ const AboutSection = () => {
     <section
       style={{
         position: 'relative',
+        overflow: 'hidden', // Ensures no extra background is shown
         backgroundImage: `url(${backgroundImage})`, // Use the imported image
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundSize: 'cover', // Ensures the image covers the entire area
+        backgroundPosition: 'top center', // Focuses on the top center of the image
         backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'fixed',
-        minHeight: '100vh',
+        minHeight: '70vh',
       }}
       className="bg-gray-50"
     >
       {/* Fade overlay */}
-      <div 
+      <div
         style={{
           position: 'absolute',
           top: 0,
