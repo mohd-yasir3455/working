@@ -16,6 +16,11 @@ app.use(cors());
 app.use(express.json());
 app.use("/api", require("./Routes/CreateUser"));
 
+app.get('/api/health', (req, res) => {
+  res.status(200).send('Server is live!');
+});
+
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
