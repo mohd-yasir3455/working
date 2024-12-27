@@ -7,7 +7,7 @@ import img3 from "../Components/images/t3.jpg";
 import img4 from "../Components/images/t4.jpg";
 import img5 from "../Components/images/t5.jpg";
 import img6 from "../Components/images/t7.jpg";
-import bgImage from "../Components/images/t1.jpg"; // Background image for parallax
+
 
 const Gallery = () => {
   return (
