@@ -150,7 +150,8 @@ const RegistrationForm = () => {
 
     try {
       // Use environment variable for API base URL
-      const apiUrl ="https://www.beesfoundatio.com/api/form"
+      // const apiUrl ="https://www.beesfoundatio.com/api/form"
+      const apiUrl = "https://bees-backend.vercel.app/api/form";
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: {

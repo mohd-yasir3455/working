@@ -15,10 +15,7 @@ import Header from './Pages/LandingPage/Components/Header';
 import Footer from './Pages/LandingPage/Components/lastfooter';
 import PhoneIcon from './Pages/LandingPage/Components/PhoneIcon'
 import WhatsAppFloatingButton from './Pages/LandingPage/Components/WhatsAppFloatingButton';
-import coding from './Pages/services/coding.jsx'
-import english from './Pages/services/english.jsx'
-import env from './Pages/services/environment.jsx'
-import { Margin } from '@mui/icons-material';
+// import HealthCheck from './Pages/RegisterPage/Components/output/backend_call';
 
 
 const App = () => {
@@ -35,8 +32,7 @@ const App = () => {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/faq" element={<FAQSection />} />
         <Route path="/phone" element={<PhoneIcon />} />
-   
-       
+        {/* <Route path="/health" element={<HealthCheck />} />   */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/rules" element={<RulesPage />} />
