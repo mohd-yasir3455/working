@@ -397,10 +397,9 @@ const RegistrationForm = () => {
                       errors.availingBenefits || "Please select one option."
                     }
                   >
-                    <MenuItem value="true">Avail the benefits</MenuItem>
-                    <MenuItem value="false">
-                    Donate money for the education of underprivileged children
-                    </MenuItem>
+                  <MenuItem value={true}>Avail the benefits</MenuItem>
+<MenuItem value={false}>Donate money for the education of underprivileged children</MenuItem>
+
                   </TextField>
                 </Grid>
 
