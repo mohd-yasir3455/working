@@ -151,6 +151,7 @@ const RegistrationForm = () => {
     try {
       // Use environment variable for API base URL
       const apiUrl = "https://bees-backend-pwv8.onrender.com/api/form";
+
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
