@@ -144,6 +144,8 @@ const RegistrationForm = () => {
       setErrors(tempErrors);
       return;
     }
+     // showing the data in console 
+    console.log("Form Data Submitted:", formData);
 
     // Start loading
     setIsSubmitting(true);
@@ -158,8 +160,10 @@ const RegistrationForm = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
+        
       });
-
+      console.log(response.body);
+      
       if (response.ok) {
         const data = await response.json(); // If the response contains JSON data
         alert("Registration successful");
@@ -398,7 +402,7 @@ const RegistrationForm = () => {
                     }
                   >
                   <MenuItem value={true}>Avail the benefits</MenuItem>
-<MenuItem value={false}>Donate money for the education of underprivileged children</MenuItem>
+                  <MenuItem value={false}>Donate money for the education of underprivileged children</MenuItem>
 
                   </TextField>
                 </Grid>
