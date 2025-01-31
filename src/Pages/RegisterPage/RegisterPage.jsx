@@ -1,13 +1,11 @@
 // src/pages/RegisterPage.jsx
-import React from 'react';
-import RegisterForm from './Components/RegisterForm';
-
+import React from "react";
+import RegisterForm from "./Components/RegisterForm";
 
 const RegisterPage = () => {
   return (
     <div>
-    <RegisterForm/>
-  
+      <RegisterForm />
     </div>
   );
 };
