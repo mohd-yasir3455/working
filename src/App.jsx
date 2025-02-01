@@ -4,7 +4,7 @@ import { Analytics } from "@vercel/analytics/react"
 import {Box} from '@mui/material'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LandingPage from './Pages/LandingPage/LandingPage';
-import RegisterPage from './Pages/RegisterPage/RegisterPage';
+import RegisterForm from './Pages/RegisterPage/Components/RegisterForm';
 import LoginPage from './Pages/LoginPage/LoginPage';
 import About from '../src/Pages/LandingPage/Components/about'
 import RulesPage from "./Pages/LandingPage/Components/RulesPage"
@@ -29,7 +29,7 @@ const App = () => {
     <WhatsAppFloatingButton/>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/register" element={<RegisterForm />} />
         <Route path="/faq" element={<FAQSection />} />
         <Route path="/phone" element={<PhoneIcon />} />
         {/* <Route path="/health" element={<HealthCheck />} />   */}
