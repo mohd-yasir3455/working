@@ -98,9 +98,6 @@ const RegistrationForm = () => {
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData1, setFormData1] = useState({
-    availingBenefits: false, // Boolean flag
-  });
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -144,7 +141,7 @@ const RegistrationForm = () => {
       setErrors(tempErrors);
       return;
     }
-     // showing the data in console 
+    // showing the data in console
     console.log("Form Data Submitted:", formData);
 
     // Start loading
@@ -160,10 +157,9 @@ const RegistrationForm = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
-        
       });
       console.log(response.body);
-      
+
       if (response.ok) {
         const data = await response.json(); // If the response contains JSON data
         alert("Registration successful");
@@ -215,11 +211,12 @@ const RegistrationForm = () => {
       <Box
         sx={{
           minHeight: "100vh",
+          minWidth: "7vw",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           backgroundColor: theme.palette.background.default,
-          py: 8,
+          py: 3,
         }}
       >
         <Container maxWidth="md">
@@ -228,15 +225,20 @@ const RegistrationForm = () => {
             sx={{
               borderRadius: 2,
               boxShadow: 2,
-              p: 4,
+              p: 3,
               backgroundColor: "#fff",
             }}
           >
-            <Typography variant="h4" gutterBottom align="center">
+            <Typography
+              variant="h4"
+              gutterBottom
+              align="center"
+              sx={{ mb: 5 }} // Added margin-bottom
+            >
               Registration Form
             </Typography>
             <form onSubmit={handleSubmit}>
-              <Grid container spacing={2}>
+              <Grid container spacing={3}>
                 {/* Password Fields */}
                 <Grid item xs={12} md={6}>
                   <TextField
@@ -315,7 +317,7 @@ const RegistrationForm = () => {
                 </Grid>
 
                 {/* Additional Information */}
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={6} lg={12}>
                   <TextField
                     fullWidth
                     label="Occupation"
@@ -365,7 +367,7 @@ const RegistrationForm = () => {
                     onChange={handleChange}
                   />
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={6} lg={12}>
                   <TextField
                     fullWidth
                     select
@@ -384,90 +386,94 @@ const RegistrationForm = () => {
                   </TextField>
                 </Grid>
                 <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    select
-                    label="Do you want to avail the benefits offered by the foundation"
-                    name="availingBenefits"
-                    value={formData.availingBenefits}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        availingBenefits: e.target.value === "true", // Convert string to boolean
-                      })
-                    }
-                    error={!!errors.availingBenefits}
-                    helperText={
-                      errors.availingBenefits || "Please select one option."
-                    }
-                  >
-                  <MenuItem value={true}>Avail the benefits</MenuItem>
-                  <MenuItem value={false}>Donate money for the education of underprivileged children</MenuItem>
+  <TextField
+    fullWidth
+    select
+    label="Do you want to avail the benefits offered by the foundation"
+    name="availingBenefits"
+    value={formData.availingBenefits}
+    onChange={(e) => {
+      const newValue = e.target.value === "true"; // Convert string to boolean
+      console.log("Availing Benefits:", newValue); // Debug log
+      setFormData({
+        ...formData,
+        availingBenefits: newValue,
+      });
+    }}
+    error={!!errors.availingBenefits}
+    helperText={
+      errors.availingBenefits || "Please select one option."
+    }
+  >
+    <MenuItem value="true">Avail the benefits</MenuItem>
+    <MenuItem value="false">
+      Donate money for the education of underprivileged children
+    </MenuItem>
+  </TextField>
+</Grid>
 
-                  </TextField>
-                </Grid>
+{formData.availingBenefits === true && (
+  <>
+    {/* Nominee 1 Details */}
+    <Grid item xs={12} md={6}>
+      <TextField
+        fullWidth
+        label="Nominee 1 Name"
+        name="nominee1"
+        value={formData.nominee1}
+        onChange={handleChange}
+      />
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <TextField
+        fullWidth
+        label="Relation with Nominee 1"
+        name="relationWithNominee1"
+        value={formData.relationWithNominee1}
+        onChange={handleChange}
+      />
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <TextField
+        fullWidth
+        label="Nominee 1 Mobile"
+        name="nominee1Mobile"
+        value={formData.nominee1Mobile}
+        onChange={handleChange}
+      />
+    </Grid>
 
-                {formData.availingBenefits && (
-                  <>
-                    {/* Nominee 1 Details */}
-                    <Grid item xs={12} md={6}>
-                      <TextField
-                        fullWidth
-                        label="Nominee 1 Name"
-                        name="nominee1"
-                        value={formData.nominee1}
-                        onChange={handleChange}
-                      />
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                      <TextField
-                        fullWidth
-                        label="Relation with Nominee 1"
-                        name="relationWithNominee1"
-                        value={formData.relationWithNominee1}
-                        onChange={handleChange}
-                      />
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                      <TextField
-                        fullWidth
-                        label="Nominee 1 Mobile"
-                        name="nominee1Mobile"
-                        value={formData.nominee1Mobile}
-                        onChange={handleChange}
-                      />
-                    </Grid>
+    {/* Nominee 2 Details */}
+    <Grid item xs={12} md={6}>
+      <TextField
+        fullWidth
+        label="Nominee 2 Name"
+        name="nominee2"
+        value={formData.nominee2}
+        onChange={handleChange}
+      />
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <TextField
+        fullWidth
+        label="Relation with Nominee 2"
+        name="relationWithNominee2"
+        value={formData.relationWithNominee2}
+        onChange={handleChange}
+      />
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <TextField
+        fullWidth
+        label="Nominee 2 Mobile"
+        name="nominee2Mobile"
+        value={formData.nominee2Mobile}
+        onChange={handleChange}
+      />
+    </Grid>
+  </>
+)}
 
-                    {/* Nominee 2 Details */}
-                    <Grid item xs={12} md={6}>
-                      <TextField
-                        fullWidth
-                        label="Nominee 2 Name"
-                        name="nominee2"
-                        value={formData.nominee2}
-                        onChange={handleChange}
-                      />
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                      <TextField
-                        fullWidth
-                        label="Relation with Nominee 2"
-                        name="relationWithNominee2"
-                        value={formData.relationWithNominee2}
-                        onChange={handleChange}
-                      />
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                      <TextField
-                        fullWidth
-                        label="Nominee 2 Mobile"
-                        name="nominee2Mobile"
-                        value={formData.nominee2Mobile}
-                        onChange={handleChange}
-                      />
-                    </Grid>
-                  </>
-                )}
 
                 {/* Disease Information */}
                 <Grid item xs={12}>
