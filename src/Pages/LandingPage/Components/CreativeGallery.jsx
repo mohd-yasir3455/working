@@ -18,11 +18,11 @@ const Gallery = () => {
         height: 'auto',
       }}
     >
-      <Container maxWidth="lg" className="my-12 relative z-10">
+      <Container maxWidth="lg" className="my-12 relative z-10 mx-10">
         <Typography 
           variant="h4" 
           component="h1" 
-          className="font-bold text-4xl text-center text-orange-600 mb-8"
+          className="font-bold text-6xl text-center text-orange-600 mb-18  "
         >
           BEES Foundation Gallery
         </Typography>
@@ -36,9 +36,7 @@ const Gallery = () => {
                 alt="Gallery Image 1" 
                 className="w-full h-64 object-cover rounded-t-lg"
               />
-              <CardContent className="p-4">
-                <Typography variant="h6" className="font-semibold text-lg text-gray-800">Image 1</Typography>
-              </CardContent>
+             
             </Card>
           </Grid>
 
@@ -50,9 +48,7 @@ const Gallery = () => {
                 alt="Gallery Image 2" 
                 className="w-full h-64 object-cover rounded-t-lg"
               />
-              <CardContent className="p-4">
-                <Typography variant="h6" className="font-semibold text-lg text-gray-800">Image 2</Typography>
-              </CardContent>
+              
             </Card>
           </Grid>
 
@@ -64,9 +60,7 @@ const Gallery = () => {
                 alt="Gallery Image 3" 
                 className="w-full h-64 object-cover rounded-t-lg"
               />
-              <CardContent className="p-4">
-                <Typography variant="h6" className="font-semibold text-lg text-gray-800">Image 3</Typography>
-              </CardContent>
+              
             </Card>
           </Grid>
 
@@ -78,9 +72,7 @@ const Gallery = () => {
                 alt="Gallery Image 4" 
                 className="w-full h-64 object-cover rounded-t-lg"
               />
-              <CardContent className="p-4">
-                <Typography variant="h6" className="font-semibold text-lg text-gray-800">Image 4</Typography>
-              </CardContent>
+ 
             </Card>
           </Grid>
 
@@ -92,9 +84,7 @@ const Gallery = () => {
                 alt="Gallery Image 5" 
                 className="w-full h-64 object-cover rounded-t-lg"
               />
-              <CardContent className="p-4">
-                <Typography variant="h6" className="font-semibold text-lg text-gray-800">Image 5</Typography>
-              </CardContent>
+        
             </Card>
           </Grid>
 
@@ -106,9 +96,7 @@ const Gallery = () => {
                 alt="Gallery Image 6" 
                 className="w-full h-64 object-cover rounded-t-lg"
               />
-              <CardContent className="p-4">
-                <Typography variant="h6" className="font-semibold text-lg text-gray-800">Image 6</Typography>
-              </CardContent>
+            
             </Card>
           </Grid>
         </Grid>
