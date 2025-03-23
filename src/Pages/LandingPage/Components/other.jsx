@@ -4,6 +4,8 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 import { Autoplay } from 'swiper/modules'; // Import Autoplay module
 import img1 from '../Components/images/other1.jpg';
+import img2 from '../Components/images/vaseema_kausar.jpg';
+import img3 from '../Components/images/tabish.jpg';
 
 export default function Other() {
   return (
@@ -32,9 +34,9 @@ export default function Other() {
               className="w-40 h-40 rounded-lg object-cover"
             />
             <div>
-              <h3 className="text-lg font-medium text-gray-900">Title 1</h3>
+              <h3 className="text-lg font-medium text-gray-900">Sajid Khan</h3>
               <p className="mt-0.5 text-gray-700">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+               Vice President
               </p>
             </div>
           </div>
@@ -44,14 +46,14 @@ export default function Other() {
         <SwiperSlide>
           <div className="flex items-start gap-4 max-w-sm mx-auto">
             <img
-              src={img1}
+              src={img2}
               alt="Card 2"
               className="w-40 h-40 rounded-lg object-cover"
             />
             <div>
-              <h3 className="text-lg font-medium text-gray-900">Title 2</h3>
+              <h3 className="text-lg font-medium text-gray-900">Vaseema Kausar </h3>
               <p className="mt-0.5 text-gray-700">
-                Voluptates voluptas distinctio nesciunt quas non animi.
+              Secretory
               </p>
             </div>
           </div>
@@ -61,14 +63,14 @@ export default function Other() {
         <SwiperSlide>
           <div className="flex items-start gap-4 max-w-sm mx-auto">
             <img
-              src={img1}
+              src={img3}
               alt="Card 3"
               className="w-40 h-40 rounded-lg object-cover"
             />
             <div>
-              <h3 className="text-lg font-medium text-gray-900">Title 3</h3>
+              <h3 className="text-lg font-medium text-gray-900"> Mohd Tabish</h3>
               <p className="mt-0.5 text-gray-700">
-                Distinctio nesciunt quas non animi laborum incidunt.
+             Treasurer
               </p>
             </div>
           </div>
