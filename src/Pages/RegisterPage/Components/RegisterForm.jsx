@@ -86,7 +86,7 @@ const labels = {
     district: "District",
     state: "State",
     availingBenefits:
-      "Do you want to avail the benefits offered by the foundation?",
+      "Do you want to avail the benefits?",
     avail: "Avail the benefits",
     donate: "Donate money for the education of underprivileged children",
     nominee1: "Nominee 1 Name",
@@ -123,7 +123,7 @@ const labels = {
     district: "जिला",
     state: "राज्य",
     availingBenefits:
-      "क्या आप फाउंडेशन द्वारा प्रदान किए गए लाभ प्राप्त करना चाहते हैं?",
+      "क्या आप लाभ प्राप्त करना चाहते हैं?",
     avail: "लाभ प्राप्त करें",
     donate: "वंचित बच्चों की शिक्षा के लिए धन दान करें",
     nominee1: "नामांकित व्यक्ति 1 का नाम",
@@ -474,31 +474,31 @@ const RegistrationForm = () => {
                   </TextField>
                 </Grid>
                 <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    select
-                    label={labels[language].availingBenefits}
-                    value={formData.availingBenefits}
-                    onChange={(e) => {
-                      const newValue = e.target.value === "true"; // Convert string to boolean
-                  
-                      setFormData({
-                        ...formData,
-                        availingBenefits: newValue,
-                      });
-                    }}
-                    error={!!errors.availingBenefits}
-                    helperText={
-                      errors.availingBenefits || 
-                      labels[language].helperSelectOption
-                    }
-                  >
-                    <MenuItem value="true">{labels[language].avail}</MenuItem>
-                    <MenuItem value="false">
-                    {labels[language].donate}
-                    </MenuItem>
-                  </TextField>
-                </Grid>
+  <TextField
+    fullWidth
+    select
+    label={labels[language].availingBenefits}
+    value={formData.availingBenefits}
+    onChange={(e) => {
+      const newValue = e.target.value === "true"; // Convert string to boolean
+      setFormData({
+        ...formData,
+        availingBenefits: newValue,
+      });
+    }}
+    error={!!errors.availingBenefits}
+    helperText={
+      errors.availingBenefits || labels[language].helperSelectOption
+    }
+  >
+    <MenuItem value="true" sx={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
+      {labels[language].avail}
+    </MenuItem>
+    <MenuItem value="false" sx={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
+      {labels[language].donate}
+    </MenuItem>
+  </TextField>
+</Grid>
 
                 {formData.availingBenefits === true && (
                   <>
